@@ -1,44 +1,46 @@
 ---
-title: "Typography & Markdown Test Post 2"
-date: 2026-04-15T12:00:00+07:00
+title: "Panduan Self-Hosting: Mengapa dan Bagaimana"
+date: 2026-04-14T10:00:00+07:00
 draft: false
-author: "okutasan"
+author: "sinau-theme"
+description: "Kenapa self-hosting bisa menjadi pilihan terbaik untuk privasi dan kontrol penuh atas data dan layanan digital Anda."
+categories: ["Self-Hosting"]
+tags: ["self-hosting", "vps", "privacy", "docker"]
+series: []
+featured: true
+editorspick: false
+image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=500&q=80&fit=crop"
+quote: ""
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id enim id mauris hendrerit blandit. Praesent a tellus ut neque tempus finibus. Cras condimentum lorem quis est dictum, sit amet iaculis mi vehicula. Suspendisse potenti. Nam at sapien eu orci fermentum mollis.
+Self-hosting adalah praktik menjalankan layanan digital di server yang Anda kendalikan sendiri, bukan bergantung pada layanan cloud pihak ketiga. Dari email server, cloud storage, hingga analytics — semua bisa di-host sendiri.
 
-Nullam eget nisl felis. Vestibulum tristique sapien ut efficitur dignissim. Sed vel justo nec sapien tincidunt tristique. Etiam in sem ac nisi gravida vestibulum in et metus. Morbi fringilla, turpis sodales interdum posuere, elit sem tincidunt massa, a pharetra leo leo varius velit.
+## Kenapa Self-Hosting?
 
+Ada beberapa alasan utama mengapa banyak orang memilih self-hosting:
 
-# Heading 1 Test
-This is a paragraph under **Heading 1**. Testing *italics*, **bold**, and `inline code`.
+1. **Kontrol penuh** atas data dan konfigurasi
+2. **Privasi** — data tidak melewati server pihak ketiga
+3. **Biaya** — satu VPS bisa menggantikan banyak subscription SaaS
+4. **Belajar** — memahami bagaimana layanan digital bekerja
 
-## Heading 2 Test
-This is a paragraph under h2. 
-- Bullet list 1
-- Bullet list 2
-  - Nested bullet list
+## Persyaratan Dasar
 
-### Heading 3 Test
-Lorem ipsum dolor sit amet.
-1. Ordered list item 1
-2. Ordered list item 2
+Sebelum memulai self-hosting, ada beberapa persyaratan teknis yang perlu dipahami:
 
-#### Heading 4 Test
-> This is a blockquote test. It should look distinct from normal text.
+- **VPS atau dedicated server** dengan minimal 2GB RAM
+- **Domain name** yang bisa dikonfigurasi DNS-nya
+- **Pengetahuan dasar Linux** — navigasi terminal, text editor, permission
+- **Pemahaman tentang Docker** — sebagian besar self-hosted app menggunakan Docker
 
-##### Heading 5 Test
+## Aplikasi yang Bisa Di-host Sendiri
 
-```python
-# Code block test
-def hello_world():
-    print("Hello, World!")
-```
+Berikut beberapa aplikasi populer yang bisa di-host sendiri:
 
----
-Testing horizontal rule above this line. [Link Test](https://example.com)
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id enim id mauris hendrerit blandit. Praesent a tellus ut neque tempus finibus. Cras condimentum lorem quis est dictum, sit amet iaculis mi vehicula. Suspendisse potenti. Nam at sapien eu orci fermentum mollis.
-
-Nullam eget nisl felis. Vestibulum tristique sapien ut efficitur dignissim. Sed vel justo nec sapien tincidunt tristique. Etiam in sem ac nisi gravida vestibulum in et metus. Morbi fringilla, turpis sodales interdum posuere, elit sem tincidunt massa, a pharetra leo leo varius velit.
-
+| Kategori | Alternatif Self-Hosted |
+|---|---|
+| Cloud Storage | Nextcloud, Seafile |
+| Analytics | Plausible, Umami |
+| Password Manager | Vaultwarden |
+| Git Hosting | Gitea, Forgejo |
+| Email | Mailcow, Mailu |

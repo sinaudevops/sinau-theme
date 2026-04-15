@@ -1,0 +1,32 @@
+{{/*
+  FEATURED POSTS SECTION — Section "POPULER" di homepage
+  Logic: Ambil max 6 post yang punya front matter `featured: true`
+  Fallback: Jika tidak ada featured posts, ambil 6 post terbaru
+*/}}
+{{- $mainSections := site.Params.mainSections | default (slice "posts") -}}
+{{- $allPosts := where .Site.RegularPages "Type" "in" $mainSections -}}
+{{- $featured := where $allPosts "Params.featured" true -}}
+{{- if not $featured -}}
+  {{- $featured = $allPosts -}}
+{{- end -}}
+{{- $featured = first 6 $featured -}}
+
+{{- if $featured -}}
+<section class="featured-section">
+  <span class="section-label">POPULER</span>
+  <div class="featured-cards">
+    {{- range $featured -}}
+    <article class="featured-card">
+      <a href="{{ .RelPermalink }}">
+        {{- with .Params.image -}}
+          <img src="{{ . }}" alt="{{ $.Title }}">
+        {{- else -}}
+          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=500&q=80&fit=crop" alt="{{ $.Title }}">
+        {{- end -}}
+        <h3>{{ .Title }}</h3>
+      </a>
+    </article>
+    {{- end -}}
+  </div>
+</section>
+{{- end -}}

@@ -1,11 +1,73 @@
 ---
-title: "Dummy Lorem Ipsum Post 10"
-date: 2026-04-15T20:00:00+07:00
+title: "Memasang Plausible Analytics di VPS Sendiri"
+date: 2026-04-06T09:00:00+07:00
 draft: false
-author: "okutasan"
+author: "sinau-theme"
+description: "Alternatif Google Analytics yang ringan, privacy-friendly, dan bisa di-host sendiri menggunakan Docker."
+categories: ["Self-Hosting"]
+tags: ["plausible", "analytics", "privacy", "docker"]
+series: []
+featured: false
+editorspick: false
+image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&q=80&fit=crop"
+quote: ""
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id enim id mauris hendrerit blandit. Praesent a tellus ut neque tempus finibus. Cras condimentum lorem quis est dictum, sit amet iaculis mi vehicula. Suspendisse potenti. Nam at sapien eu orci fermentum mollis.
+Plausible Analytics adalah alternatif Google Analytics yang privacy-friendly. Tidak ada cookie, tidak ada data yang dijual ke pihak ketiga, dan ukurannya hanya 1KB script — jauh lebih ringan dari Google Analytics.
 
-Nullam eget nisl felis. Vestibulum tristique sapien ut efficitur dignissim. Sed vel justo nec sapien tincidunt tristique. Etiam in sem ac nisi gravida vestibulum in et metus. Morbi fringilla, turpis sodales interdum posuere, elit sem tincidunt massa, a pharetra leo leo varius velit.
+## Kenapa Plausible?
 
+- **Privacy-first** — tidak mengumpulkan data personal
+- **GDPR compliant** — tidak perlu cookie banner
+- **Lightweight** — script 1KB vs Google Analytics 45KB+
+- **Open source** — bisa di-host sendiri secara gratis
+
+## Setup dengan Docker Compose
+
+```yaml
+# docker-compose.yml
+version: '3.8'
+
+services:
+  plausible:
+    image: plausible/analytics:v2
+    restart: unless-stopped
+    command: sh -c "sleep 10 && /entrypoint.sh db createdb && /entrypoint.sh db migrate && /entrypoint.sh run"
+    depends_on:
+      - plausible_db
+      - plausible_events_db
+    ports:
+      - "8000:8000"
+    env_file:
+      - plausible-conf.env
+
+  plausible_db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=plausible
+
+  plausible_events_db:
+    image: clickhouse/clickhouse-server:23.3.7.5-alpine
+    restart: unless-stopped
+    volumes:
+      - event-data:/var/lib/clickhouse
+      - ./clickhouse/clickhouse-config.xml:/etc/clickhouse-server/config.d/logging.xml:ro
+
+volumes:
+  db-data:
+  event-data:
+```
+
+## Integrasi dengan Hugo
+
+Tambahkan script Plausible ke template Hugo:
+
+```html
+<!-- Di layouts/partials/head.html -->
+<script defer data-domain="domain.com" src="https://analytics.domain.com/js/script.js"></script>
+```

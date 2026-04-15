@@ -1,11 +1,67 @@
 ---
-title: "Dummy Lorem Ipsum Post 11"
-date: 2026-04-15T21:00:00+07:00
+title: "Workflow Menulis Teknis: Obsidian → Hugo → Publish"
+date: 2026-04-05T08:00:00+07:00
 draft: false
-author: "okutasan"
+author: "sinau-theme"
+description: "Bagaimana menyusun workflow menulis catatan teknis dari draft di Obsidian hingga terbit di blog Hugo."
+categories: ["Produktivitas"]
+tags: ["obsidian", "hugo", "writing", "workflow"]
+series: []
+featured: false
+editorspick: false
+image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=500&q=80&fit=crop"
+quote: ""
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id enim id mauris hendrerit blandit. Praesent a tellus ut neque tempus finibus. Cras condimentum lorem quis est dictum, sit amet iaculis mi vehicula. Suspendisse potenti. Nam at sapien eu orci fermentum mollis.
+Workflow yang baik bisa meningkatkan produktivitas menulis secara signifikan. Berikut adalah workflow yang digunakan: mulai dari ide di Obsidian, draft, hingga publish di blog Hugo.
 
-Nullam eget nisl felis. Vestibulum tristique sapien ut efficitur dignissim. Sed vel justo nec sapien tincidunt tristique. Etiam in sem ac nisi gravida vestibulum in et metus. Morbi fringilla, turpis sodales interdum posuere, elit sem tincidunt massa, a pharetra leo leo varius velit.
+## Overview Workflow
 
+```
+Obsidian (Draft) → Git Push → Hugo Build → GitHub Pages (Live)
+```
+
+## Fase 1: Draft di Obsidian
+
+Obsidian digunakan sebagai "second brain" — semua catatan, ide, dan draft artikel disimpan di sini. Format Markdown yang digunakan Obsidian 100% kompatibel dengan Hugo.
+
+Struktur folder di Obsidian:
+
+```
+Vault/
+├── Inbox/          # Catatan mentah, belum diproses
+├── Notes/          # Catatan yang sudah diproses
+│   ├── Linux/
+│   ├── DevOps/
+│   └── Coding/
+└── Blog/           # Draft untuk blog
+    ├── Published/  # Sudah dipublish
+    └── Draft/      # Masih dalam proses
+```
+
+## Fase 2: Review dan Edit
+
+Sebelum dipublish, artikel melewati proses review:
+
+1. **Cek fakta** — pastikan semua perintah dan kode sudah ditest
+2. **Struktur** — pastikan ada intro, body, dan kesimpulan
+3. **Front matter** — tambahkan tags, kategoris, image, dan description
+4. **Copy-edit** — perbaiki typo dan kalimat yang tidak jelas
+
+## Fase 3: Publish
+
+```bash
+# Copy artikel ke folder Hugo
+cp ~/Obsidian/Blog/Draft/artikel-baru.md ~/myblog/content/posts/
+
+# Edit front matter draft: false
+# Preview lokal
+hugo server -D
+
+# Commit dan push
+git add .
+git commit -m "Post: Judul Artikel Baru"
+git push
+
+# GitHub Actions otomatis deploy ke GitHub Pages
+```

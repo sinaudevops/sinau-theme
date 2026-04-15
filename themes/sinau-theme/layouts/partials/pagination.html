@@ -1,0 +1,40 @@
+{{/*
+  PAGINATION PARTIAL
+  Data source: .Paginator (otomatis dari Hugo — harus di-pass dari parent template)
+  Digunakan oleh: index.html, _default/list.html
+
+  Cara penggunaan:
+    {{ partial "pagination.html" . }}
+  (pastikan .Paginate sudah dipanggil di parent template)
+*/}}
+{{- $paginator := .Paginator -}}
+{{- if gt $paginator.TotalPages 1 -}}
+<nav class="pagination" aria-label="Navigasi halaman">
+
+  {{/* Tombol Sebelumnya */}}
+  {{- if $paginator.HasPrev -}}
+    <a href="{{ $paginator.Prev.URL }}" class="pagination-btn pagination-prev">← Sebelumnya</a>
+  {{- else -}}
+    <span class="pagination-btn pagination-prev" style="opacity:0.4;pointer-events:none;">← Sebelumnya</span>
+  {{- end -}}
+
+  {{/* Nomor Halaman */}}
+  <div class="pagination-numbers">
+    {{- range $paginator.Pagers -}}
+      {{- if eq . $paginator -}}
+        <span class="pagination-num active">{{ .PageNumber }}</span>
+      {{- else -}}
+        <a href="{{ .URL }}" class="pagination-num">{{ .PageNumber }}</a>
+      {{- end -}}
+    {{- end -}}
+  </div>
+
+  {{/* Tombol Selanjutnya */}}
+  {{- if $paginator.HasNext -}}
+    <a href="{{ $paginator.Next.URL }}" class="pagination-btn pagination-next">Selanjutnya →</a>
+  {{- else -}}
+    <span class="pagination-btn pagination-next" style="opacity:0.4;pointer-events:none;">Selanjutnya →</span>
+  {{- end -}}
+
+</nav>
+{{- end -}}

@@ -1,0 +1,32 @@
+{{/*
+  NAVBAR PARTIAL
+  Data source: .Site.Menus.main (dari hugo.toml [[menus.main]])
+  Data source: .Site.Params.social (dari hugo.toml [[params.social]])
+*/}}
+<header class="navbar">
+  <div class="navbar-left">
+    <a href="{{ .Site.BaseURL }}" class="navbar-logo">
+      <span class="navbar-logo-icon">⚡</span>
+      <span>{{ .Site.Title }}</span>
+    </a>
+  </div>
+
+  <nav class="navbar-menu">
+    {{- range .Site.Menus.main -}}
+      <a href="{{ .URL }}"{{- if $.IsMenuCurrent "main" . }} class="active"{{- end -}}>
+        {{- .Name -}}
+        {{- if .HasChildren -}}
+          <span class="dropdown-arrow">▾</span>
+        {{- end -}}
+      </a>
+    {{- end -}}
+  </nav>
+
+  <div class="navbar-icons">
+    {{- range .Site.Params.social -}}
+      <a href="{{ .url }}" class="navbar-icon" title="{{ .name }}">{{ .icon }}</a>
+    {{- end -}}
+    <a href="#" class="navbar-icon" title="Bahasa">🌐 ID</a>
+    <a href="#" class="navbar-icon" title="Tema">🌙</a>
+  </div>
+</header>
