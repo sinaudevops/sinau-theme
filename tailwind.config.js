@@ -17,7 +17,8 @@ module.exports = {
         'dark-gray': '#525252',
         'deep-black': '#0a0a0a'
       }
-    },
-  },
-  plugins: [],
+  ],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 }
