@@ -3,3 +3,6 @@
 /resources/
 .DS_Store
 .hugo_build.lock
+
+# Mockup files (referensi desain, bukan bagian dari build)
+/mockup/

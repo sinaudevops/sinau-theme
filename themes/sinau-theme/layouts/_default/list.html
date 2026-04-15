@@ -1,8 +1,45 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
-  {{ .Content }}
-  {{ range .Pages }}
-    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-    {{ .Summary }}
-  {{ end }}
+
+  {{/* PAGE HEADER — menampilkan nama kategori/tag/section */}}
+  {{ partial "page-header.html" . }}
+
+  {{/* BLOG GRID — list artikel dalam section/taxonomy ini */}}
+  {{- $paginator := .Paginate .Pages -}}
+
+  <section class="blog-grid-section">
+    <div class="blog-grid">
+
+      {{- range $paginator.Pages -}}
+      <article class="blog-card">
+        <a href="{{ .RelPermalink }}" class="blog-card-image">
+          {{- with .Params.image -}}
+            <img src="{{ . }}" alt="{{ $.Title }}">
+          {{- else -}}
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=500&q=80&fit=crop" alt="{{ $.Title }}">
+          {{- end -}}
+        </a>
+        <div class="blog-card-body">
+          {{/* Tampilkan kategori pertama jika ada */}}
+          {{- with .GetTerms "categories" -}}
+            {{- with index . 0 -}}
+              <span class="blog-card-category">{{ .LinkTitle }}</span>
+            {{- end -}}
+          {{- end -}}
+          <a href="{{ .RelPermalink }}">
+            <h3 class="blog-card-title">{{ .Title }}</h3>
+          </a>
+          <p class="blog-card-excerpt">
+            {{ .Params.description | default (.Summary | plainify | truncate 150) }}
+          </p>
+        </div>
+      </article>
+      {{- end -}}
+
+    </div>
+
+    {{/* PAGINATION */}}
+    {{ partial "pagination.html" . }}
+
+  </section>
+
 {{ end }}

@@ -1,6 +1,18 @@
-<footer class="bg-primary-dark text-background-light py-6 mt-12">
-    <div class="container mx-auto px-4 text-center">
-        <p>&copy; {{ now.Format "2006" }} {{ .Site.Title }}. All rights reserved.</p>
-        <p class="text-sm mt-2 text-dark-gray">Built with Hugo & Tailwind CSS</p>
+{{/*
+  FOOTER PARTIAL
+  Data source: .Site.Params.footer (dari hugo.toml)
+  Data source: .Site.Params.social
+*/}}
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">{{ .Site.Params.footer.logo | default .Site.Title }}</div>
+    <div class="footer-social">
+      {{- range .Site.Params.social -}}
+        <a href="{{ .url }}" title="{{ .name }}"><span>{{ .icon }}</span></a>
+      {{- end -}}
     </div>
+  </div>
+  <p class="footer-copyright">
+    &copy; {{ now.Format "2006" }} {{ .Site.Params.footer.copyright | default (printf "%s. All rights reserved." .Site.Title) }}
+  </p>
 </footer>

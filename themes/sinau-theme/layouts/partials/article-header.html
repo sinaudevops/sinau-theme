@@ -1,0 +1,23 @@
+{{/*
+  ARTICLE HEADER — Judul + hero quote + featured image untuk single post
+  Data source: Front Matter (.Title, .Params.quote, .Params.image)
+*/}}
+
+{{/* Judul Artikel */}}
+<header class="article-header">
+  <h1 class="article-title">{{ .Title }}</h1>
+</header>
+
+{{/* Hero Quote (hanya muncul jika ada .Params.quote di front matter) */}}
+{{- with .Params.quote -}}
+<blockquote class="hero-quote">
+  <p>"{{ . }}"</p>
+</blockquote>
+{{- end -}}
+
+{{/* Featured Image (hanya muncul jika ada .Params.image di front matter) */}}
+{{- with .Params.image -}}
+<figure class="article-featured-image">
+  <img src="{{ . }}" alt="{{ $.Title }}">
+</figure>
+{{- end -}}

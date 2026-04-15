@@ -1,0 +1,30 @@
+{{/*
+  RELATED POSTS — "BACA JUGA" section di single page
+  Logic: Gunakan Hugo built-in .Site.RegularPages.Related
+  Fallback: Jika tidak ada related, tampilkan 4 post terbaru dari section yang sama
+*/}}
+{{- $mainSections := site.Params.mainSections | default (slice "posts") -}}
+{{- $related := first 4 (.Site.RegularPages.Related .) -}}
+{{- if not $related -}}
+  {{- $related = first 4 (where .Site.RegularPages "Type" "in" $mainSections) -}}
+{{- end -}}
+
+{{- if $related -}}
+<section class="related-posts">
+  <span class="section-label">BACA JUGA</span>
+  <div class="related-grid">
+    {{- range $related -}}
+    <article class="related-card">
+      <a href="{{ .RelPermalink }}">
+        {{- with .Params.image -}}
+          <img src="{{ . }}" alt="{{ $.Title }}">
+        {{- else -}}
+          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&q=80&fit=crop" alt="{{ $.Title }}">
+        {{- end -}}
+        <h4>{{ .Title }}</h4>
+      </a>
+    </article>
+    {{- end -}}
+  </div>
+</section>
+{{- end -}}

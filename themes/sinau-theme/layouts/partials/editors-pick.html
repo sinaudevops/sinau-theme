@@ -1,0 +1,35 @@
+{{/*
+  EDITOR'S PICK SECTION — "PILIHAN PENULIS"
+  Logic: Tampilkan 2 post pertama yang punya `editorspick: true` di front matter
+  Fallback: 2 post pertama yang punya image
+*/}}
+{{- $mainSections := site.Params.mainSections | default (slice "posts") -}}
+{{- $allPosts := where .Site.RegularPages "Type" "in" $mainSections -}}
+{{- $picks := where $allPosts "Params.editorspick" true -}}
+{{- if not $picks -}}
+  {{- $picks = where $allPosts "Params.image" "!=" nil -}}
+{{- end -}}
+{{- $picks = first 2 $picks -}}
+
+{{- if $picks -}}
+<section class="editors-pick">
+  <span class="section-label">PILIHAN PENULIS</span>
+  <div class="editors-grid">
+    {{- range $picks -}}
+    <article class="editor-card">
+      <a href="{{ .RelPermalink }}">
+        {{- with .Params.image -}}
+          <img src="{{ . }}" alt="{{ $.Title }}">
+        {{- else -}}
+          <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=80&fit=crop" alt="{{ $.Title }}">
+        {{- end -}}
+        <div class="editor-card-overlay">
+          <h2>{{ .Title }}</h2>
+          <p>{{ .Params.description | default (.Summary | plainify | truncate 120) }}</p>
+        </div>
+      </a>
+    </article>
+    {{- end -}}
+  </div>
+</section>
+{{- end -}}

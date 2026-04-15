@@ -1,0 +1,25 @@
+{{/*
+  NEWSLETTER CTA PARTIAL
+  Data source: .Site.Params.newsletter (dari hugo.toml)
+  Bisa di-disable per halaman dengan front matter: newsletter: false
+*/}}
+{{- $showNewsletter := true -}}
+{{- if eq (printf "%v" .Params.newsletter) "false" -}}
+  {{- $showNewsletter = false -}}
+{{- end -}}
+
+{{- if $showNewsletter -}}
+<section class="newsletter">
+  <h2 class="newsletter-title">{{ .Site.Params.newsletter.title | default "Berlangganan Newsletter" }}</h2>
+  <p class="newsletter-desc">{{ .Site.Params.newsletter.description | default "" }}</p>
+  <form class="newsletter-form">
+    <input type="email"
+           placeholder="{{ .Site.Params.newsletter.placeholder | default "email@kamu.com" }}"
+           class="newsletter-input"
+           required>
+    <button type="submit" class="newsletter-btn">
+      {{ .Site.Params.newsletter.buttonText | default "Langganan" }}
+    </button>
+  </form>
+</section>
+{{- end -}}

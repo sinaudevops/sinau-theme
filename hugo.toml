@@ -1,4 +1,71 @@
-baseURL = 'https://example.org/'
-languageCode = 'en-us'
-title = 'My New Hugo Site'
+baseURL = 'http://localhost:1313/'
+languageCode = 'id'
+title = 'sinau-theme'
 theme = 'sinau-theme'
+
+# Pagination
+paginate = 6
+
+# Main sections (untuk query .Site.RegularPages)
+[params]
+  description = "Catatan Teknis — Linux, DevOps, dan Self-Hosting"
+  author = "sinau-theme"
+  mainSections = ["posts"]
+
+  # Page Header
+  pageTitle = "Catatan Teknis — Linux, DevOps, dan Self-Hosting"
+
+  # Newsletter CTA
+  [params.newsletter]
+    title = "Ikuti Catatan Teknis."
+    description = "Dapatkan notifikasi tulisan terbaru langsung via RSS atau email."
+    buttonText = "Langganan"
+    placeholder = "email@kamu.com"
+
+  # Footer
+  [params.footer]
+    logo = "sinau-theme."
+    copyright = "sinau-theme. Blog teknis pribadi. Dibuat dengan Hugo."
+
+  # Social Links (dipakai di navbar & footer)
+  [[params.social]]
+    name = "Twitter"
+    url = "https://twitter.com/"
+    icon = "𝕏"
+
+  [[params.social]]
+    name = "GitHub"
+    url = "https://github.com/"
+    icon = "⬡"
+
+# Menu Utama
+[[menus.main]]
+  name = 'Catatan'
+  pageRef = '/posts'
+  weight = 10
+
+[[menus.main]]
+  name = 'Kategori'
+  pageRef = '/categories'
+  weight = 20
+
+[[menus.main]]
+  name = 'Series'
+  pageRef = '/series'
+  weight = 30
+
+[[menus.main]]
+  name = 'Arsip'
+  pageRef = '/arsip'
+  weight = 40
+
+[[menus.main]]
+  name = 'Tentang'
+  pageRef = '/tentang'
+  weight = 50
+
+# Taxonomies
+[taxonomies]
+  category = 'categories'
+  tag = 'tags'
+  series = 'series'
