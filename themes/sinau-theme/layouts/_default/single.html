@@ -1,0 +1,24 @@
+{{ define "main" }}
+<article class="max-w-3xl mx-auto bg-white rounded-2xl shadow-md overflow-hidden pt-8">
+    <header class="px-8 pb-6 border-b border-background-light">
+        <h1 class="text-4xl font-extrabold text-primary-dark mb-4">{{ .Title }}</h1>
+        <div class="flex items-center text-dark-gray space-x-4 text-sm">
+            <span>By <span class="font-semibold text-primary-green">{{ .Params.author | default .Site.Params.author | default "Author" }}</span></span>
+            <span>&bull;</span>
+            <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "January 2, 2006" }}</time>
+        </div>
+    </header>
+    <div class="px-8 py-8 prose prose-lg max-w-none text-primary-dark leading-relaxed">
+        {{ .Content }}
+    </div>
+</article>
+
+<div class="max-w-3xl mx-auto mt-8 flex justify-between items-center text-secondary-teal text-sm font-semibold">
+    {{ with .PrevInSection }}
+        <a href="{{ .Permalink }}" class="hover:text-primary-green flex items-center">&larr; Previous: {{ .Title }}</a>
+    {{ end }}
+    {{ with .NextInSection }}
+        <a href="{{ .Permalink }}" class="hover:text-primary-green flex items-center">Next: {{ .Title }} &rarr;</a>
+    {{ end }}
+</div>
+{{ end }}

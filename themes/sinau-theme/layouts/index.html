@@ -1,0 +1,24 @@
+{{ define "main" }}
+<div class="space-y-12">
+    <div class="text-center py-16 bg-white rounded-2xl shadow-sm border border-accent-beige">
+        <h1 class="text-5xl font-extrabold text-primary-dark mb-4">Welcome to {{ .Site.Title }}</h1>
+        <p class="text-xl text-primary-green max-w-2xl mx-auto">This is the modern and dynamic sinau-theme, built with Hugo, Tailwind CSS, and AlpineJS.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {{ range first 3 (where .Site.RegularPages "Type" "in" site.Params.mainSections) }}
+        <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 border-t-4 border-primary-green">
+            <div class="p-6">
+                <h2 class="text-2xl font-bold text-secondary-teal mb-3">
+                    <a href="{{ .Permalink }}" class="hover:text-primary-green transition-colors">{{ .Title }}</a>
+                </h2>
+                <div class="text-dark-gray mb-4">
+                    {{ .Summary | truncate 120 }}
+                </div>
+                <a href="{{ .Permalink }}" class="inline-block px-4 py-2 bg-accent-beige text-primary-dark font-semibold rounded hover:bg-accent-tan transition-colors">Read More</a>
+            </div>
+        </article>
+        {{ end }}
+    </div>
+</div>
+{{ end }}
