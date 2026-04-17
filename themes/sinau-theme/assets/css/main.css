@@ -170,28 +170,6 @@ img {
 }
 
 
-/* === 2. PAGE HEADER === */
-.page-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem 2rem;
-  border-bottom: 1px solid #e5e7eb;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.page-title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #1f2937;
-}
-
-.share-icons span {
-  cursor: pointer;
-  margin-left: 1rem;
-  font-size: 1.2rem;
-}
 
 /* GLOBAL UTILITIES */
 .section-label {

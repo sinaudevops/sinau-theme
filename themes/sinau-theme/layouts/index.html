@@ -1,8 +1,5 @@
 {{ define "main" }}
 
-  {{/* PAGE HEADER — judul halaman dari params.pageTitle di hugo.toml */}}
-  {{ partial "page-header.html" . }}
-
   {{/* BLOG GRID LOGIC — Deklarasi paginator dipindah ke atas agar bisa dicek kondisinya */}}
   {{- $mainSections := site.Params.mainSections | default (slice "posts") -}}
   {{- $paginator := .Paginate (where .Site.RegularPages "Type" "in" $mainSections) -}}

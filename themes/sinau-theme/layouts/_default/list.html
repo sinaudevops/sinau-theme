@@ -1,8 +1,5 @@
 {{ define "main" }}
 
-  {{/* PAGE HEADER — menampilkan nama kategori/tag/section */}}
-  {{ partial "page-header.html" . }}
-
   {{/* BLOG GRID — list artikel dalam section/taxonomy ini */}}
   {{- $paginator := .Paginate .Pages -}}
 
