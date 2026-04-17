@@ -14,8 +14,14 @@
     {{- end -}}
   </title>
 
-  {{/* ===== META DESCRIPTION ===== */}}
   <meta name="description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+
+  {{/* ===== CANONICAL URL ===== */}}
+  <link rel="canonical" href="{{ .Permalink }}">
+
+  {{/* ===== SOCIAL SEO (OPEN GRAPH & TWITTER CARDS) ===== */}}
+  {{ template "_internal/opengraph.html" . }}
+  {{ template "_internal/twitter_cards.html" . }}
 
   {{/* ===== GOOGLE FONTS ===== */}}
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,6 +61,10 @@
 
   {{/* ===== SCROLL TO TOP ===== */}}
   {{ partial "scroll-top.html" . }}
+
+  {{/* ===== SEARCH COMPONENT ===== */}}
+  {{ partial "search-modal.html" . }}
+  {{ partial "search-script.html" . }}
 
   {{/* ===== JAVASCRIPT VIA HUGO PIPES ===== */}}
   {{- if .IsHome -}}

@@ -1,0 +1,17 @@
+{{- $wordCount := .WordCount -}}
+{{- $showToc := .Params.toc -}}
+
+{{/* Condition: Force show if toc: true, OR if words > 400 and toc != false */}}
+{{- if or (eq $showToc true) (and (gt $wordCount 400) (ne $showToc false)) -}}
+  {{- if and .TableOfContents (ne .TableOfContents "<nav id=\"TableOfContents\"></nav>") -}}
+    <aside class="toc-container">
+      <div class="toc-header">
+        {{- partial "icon.html" (dict "name" "list-details" "class" "w-5 h-5") -}}
+        <span>Table of Contents</span>
+      </div>
+      <div class="toc-body">
+        {{ .TableOfContents }}
+      </div>
+    </aside>
+  {{- end -}}
+{{- end -}}

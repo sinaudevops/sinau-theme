@@ -727,6 +727,60 @@ img {
   color: var(--cool-sky);
 }
 
+/* === TABLE OF CONTENTS === */
+.toc-container {
+  background: var(--bright-snow);
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.toc-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #1f2937;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--cool-sky-light);
+  padding-bottom: 0.5rem;
+}
+
+.toc-header svg {
+  color: var(--cool-sky);
+}
+
+.toc-body nav ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.toc-body nav ul ul {
+  padding-left: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.toc-body nav li {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.toc-body nav a {
+  color: #4b5563;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.toc-body nav a:hover {
+  color: var(--cool-sky);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 /* === RESPONSIVE MEDIA QUERIES === */
 @media (max-width: 900px) {
   .featured-cards {

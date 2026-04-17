@@ -1,0 +1,102 @@
+<!-- Load Fuse.js via CDN -->
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const searchModal = document.getElementById('search-modal');
+  const searchTrigger = document.getElementById('search-trigger');
+  const closeSearch = document.getElementById('close-search');
+  const searchInput = document.getElementById('search-input');
+  const searchResults = document.getElementById('search-results');
+  const searchEmpty = document.getElementById('search-empty');
+  
+  let fuse;
+  let isIndexLoaded = false;
+
+  if (!searchTrigger) return;
+
+  // Buka Modal
+  searchTrigger.addEventListener('click', function(e) {
+    e.preventDefault();
+    searchModal.style.display = 'flex';
+    searchInput.focus();
+
+    // Fetch Index.json secara lazy-load ketika search pertama kali diklik 
+    if (!isIndexLoaded) {
+      fetch('{{ "index.json" | absURL }}')
+        .then(response => response.json())
+        .then(data => {
+          // Inisialisasi parameter Fuse (Fuzzy Search threshold)
+          const options = {
+            isCaseSensitive: false,
+            shouldSort: true,
+            minMatchCharLength: 2,
+            threshold: 0.3, // Optimization: Nilai ideal utk toleransi typo, tapi tetap relevan
+            keys: [
+              { name: 'title', weight: 0.8 },
+              { name: 'categories[0].LinkTitle', weight: 0.5 },
+              { name: 'summary', weight: 0.3 },
+              { name: 'content', weight: 0.1 }
+            ]
+          };
+          fuse = new Fuse(data, options);
+          isIndexLoaded = true;
+        })
+        .catch(err => console.error("Gagal meload search index:", err));
+    }
+  });
+
+  // Tutup Modal
+  closeSearch.addEventListener('click', () => searchModal.style.display = 'none');
+  
+  // Real-time Keystroke Search
+  searchInput.addEventListener('input', function(e) {
+    if(!fuse) return;
+    
+    const query = e.target.value;
+    searchResults.innerHTML = '';
+    
+    if (query.trim() === '') {
+      searchEmpty.style.display = 'none';
+      return;
+    }
+
+    const results = fuse.search(query);
+
+    if (results.length === 0) {
+      searchEmpty.style.display = 'block';
+    } else {
+      searchEmpty.style.display = 'none';
+      // Tampilkan (Maks 10 Hasil Teratas)
+      results.slice(0, 10).forEach(result => {
+        const item = result.item;
+        
+        const li = document.createElement('li');
+        li.style.marginBottom = "15px";
+        li.style.paddingBottom = "15px";
+        li.style.borderBottom = "1px solid #eee";
+        
+        let catHtml = '';
+        if(item.categories && item.categories.length > 0) {
+           catHtml = `<span style="font-size:11px;background:#eee;padding:2px 5px;border-radius:3px; margin-left: 10px;">${item.categories[0].LinkTitle}</span>`;
+        }
+
+        li.innerHTML = `
+          <a href="${item.permalink}" style="text-decoration:none; color:inherit; display:block;">
+            <h4 style="margin:0 0 5px 0;">${item.title} ${catHtml}</h4>
+            <p style="margin:0; font-size:13px; color:#666;">${item.summary.substr(0,120)}...</p>
+          </a>
+        `;
+        searchResults.appendChild(li);
+      });
+    }
+  });
+
+  // Tutup Modal lewat escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === "Escape" && searchModal.style.display === "flex") {
+      searchModal.style.display = 'none';
+    }
+  });
+});
+</script>
