@@ -6,6 +6,9 @@
 
   {{/* ARTICLE BODY — konten Markdown dirender di sini oleh Hugo */}}
   <article class="article-body">
+    {{/* Table of Contents */}}
+    {{ partial "toc.html" . }}
+
     {{ .Content }}
   </article>
 </main>

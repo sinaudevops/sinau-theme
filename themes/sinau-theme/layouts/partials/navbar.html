@@ -25,6 +25,9 @@
   </nav>
 
   <div class="navbar-icons">
+    <a href="#" class="navbar-icon" id="search-trigger" title="Search">
+      {{ partial "icon.html" (dict "name" "search" "class" "nav-svg") }}
+    </a>
     {{- range .Site.Params.social -}}
       <a href="{{ .url }}" class="navbar-icon" title="{{ .name }}">
         {{ partial "icon.html" (dict "name" .icon "class" "nav-svg") }}

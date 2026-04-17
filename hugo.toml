@@ -69,3 +69,14 @@ paginate = 6
   category = 'categories'
   tag = 'tags'
   series = 'series'
+
+# Markdown Configuration
+[markup]
+  [markup.tableOfContents]
+    endLevel = 3
+    ordered = false
+    startLevel = 2
+
+# Output Formats
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
