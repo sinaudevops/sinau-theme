@@ -3,15 +3,20 @@
   {{/* PAGE HEADER — judul halaman dari params.pageTitle di hugo.toml */}}
   {{ partial "page-header.html" . }}
 
-  {{/* FEATURED POSTS — section "POPULER" */}}
-  {{ partial "featured-posts.html" . }}
-
-  {{/* EDITOR'S PICK — section "PILIHAN PENULIS" */}}
-  {{ partial "editors-pick.html" . }}
-
-  {{/* BLOG GRID — section "ARTIKEL TERBARU" dengan pagination */}}
+  {{/* BLOG GRID LOGIC — Deklarasi paginator dipindah ke atas agar bisa dicek kondisinya */}}
   {{- $mainSections := site.Params.mainSections | default (slice "posts") -}}
   {{- $paginator := .Paginate (where .Site.RegularPages "Type" "in" $mainSections) -}}
+
+  {{/* Tampilkan section spesial HANYA pada pagination halaman 1 */}}
+  {{- if eq $paginator.PageNumber 1 -}}
+    {{/* FEATURED POSTS — section "POPULER" */}}
+    {{ partial "featured-posts.html" . }}
+
+    {{/* EDITOR'S PICK — section "PILIHAN PENULIS" */}}
+    {{ partial "editors-pick.html" . }}
+  {{- end -}}
+
+  {{/* BLOG GRID — section "ARTIKEL TERBARU" dengan pagination */}}
 
   <section class="blog-grid-section">
     <span class="section-label">ARTIKEL TERBARU</span>

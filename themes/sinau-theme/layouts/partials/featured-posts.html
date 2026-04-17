@@ -14,19 +14,27 @@
 {{- if $featured -}}
 <section class="featured-section">
   <span class="section-label">POPULER</span>
-  <div class="featured-cards">
-    {{- range $featured -}}
-    <article class="featured-card">
-      <a href="{{ .RelPermalink }}">
-        {{- with .Params.image -}}
-          <img src="{{ . }}" alt="{{ $.Title }}">
-        {{- else -}}
-          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=500&q=80&fit=crop" alt="{{ $.Title }}">
+  
+  {{/* SPLIDE STRUCTURE */}}
+  <div class="splide featured-splide" aria-label="Popular Posts Slider">
+    <div class="splide__track">
+      <ul class="splide__list">
+        {{- range $featured -}}
+        <li class="splide__slide">
+          <article class="featured-card">
+            <a href="{{ .RelPermalink }}">
+              {{- with .Params.image -}}
+                <img src="{{ . }}" alt="{{ $.Title }}">
+              {{- else -}}
+                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=500&q=80&fit=crop" alt="{{ $.Title }}">
+              {{- end -}}
+              <h3>{{ .Title }}</h3>
+            </a>
+          </article>
+        </li>
         {{- end -}}
-        <h3>{{ .Title }}</h3>
-      </a>
-    </article>
-    {{- end -}}
+      </ul>
+    </div>
   </div>
 </section>
 {{- end -}}
