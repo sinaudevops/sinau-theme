@@ -1,0 +1,24 @@
+{{/* layouts/_default/_markup/render-image.html */}}
+{{- $image := .Page.Resources.GetMatch .Destination -}}
+
+{{- if and $image (not (strings.HasPrefix .Destination "http")) -}}
+  {{/* Diproses: Hanya Jika Gambar Lokal & Berada di Leaf Bundle */}}
+  {{/* Resize lebar ke 800px dan ubah ke format WebP */}}
+  {{- $webpImg := $image.Process "resize 800x webp q85" -}}
+  <figure>
+    <img src="{{ $webpImg.RelPermalink }}" 
+         alt="{{ .Text }}" 
+         {{ with .Title }}title="{{ . }}"{{ end }}
+         width="{{ $webpImg.Width }}" 
+         height="{{ $webpImg.Height }}"
+         loading="lazy" 
+         decoding="async">
+  </figure>
+{{- else -}}
+  {{/* Fallback: URL Eksternal atau file tidak ditemukan di resources */}}
+  <img src="{{ .Destination | safeURL }}" 
+       alt="{{ .Text }}" 
+       {{ with .Title }}title="{{ . }}"{{ end }}
+       loading="lazy" 
+       decoding="async">
+{{- end -}}

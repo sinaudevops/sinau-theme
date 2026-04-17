@@ -9,7 +9,7 @@ tags: ["monitoring", "uptime-kuma", "docker", "self-hosting"]
 series: []
 featured: false
 editorspick: false
-image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=500&q=80&fit=crop"
+image: "featured.jpg"
 quote: ""
 ---
 
@@ -58,3 +58,14 @@ services:
 5. Test notifikasi
 
 Dengan setup ini, Anda akan mendapat notifikasi real-time setiap kali ada service yang down.
+
+## Uji Coba Optimasi Gambar (Image Hooks)
+
+Bagian ini ditujukan untuk memverifikasi fitur Lazy Loading dan Image Processing otomatis (WebP).
+
+**1. Gambar Lokal (Leaf Bundle) - Otomatis WebP & Resize:**
+![Preview Gambar Lokal Terkompresi](featured.jpg)
+
+**2. Gambar Eksternal (Remote) - Lazy Loading Only:**
+![Remote Test](https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600)
+

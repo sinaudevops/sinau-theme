@@ -9,7 +9,7 @@ tags: ["nginx", "reverse-proxy", "server", "docker"]
 series: []
 featured: false
 editorspick: false
-image: "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=500&q=80&fit=crop"
+image: "featured.jpg"
 quote: ""
 ---
 
@@ -63,3 +63,14 @@ sudo certbot --nginx -d app-a.domain.com
 
 # Auto-renewal sudah dikonfigurasi otomatis oleh Certbot
 ```
+
+## Uji Coba Optimasi Gambar (Image Hooks)
+
+Bagian ini ditujukan untuk memverifikasi fitur Lazy Loading dan Image Processing otomatis (WebP).
+
+**1. Gambar Lokal (Leaf Bundle) - Otomatis WebP & Resize:**
+![Preview Gambar Lokal Terkompresi](featured.jpg)
+
+**2. Gambar Eksternal (Remote) - Lazy Loading Only:**
+![Remote Test](https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600)
+

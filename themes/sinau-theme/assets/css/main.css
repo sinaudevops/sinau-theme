@@ -49,6 +49,7 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
+  border-radius: 8px;
 }
 
 /* === 1. NAVBAR / HEADER (Blowfish Style — Light) === */
@@ -201,9 +202,10 @@ img {
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 14px;
   margin-bottom: 0.75rem;
   transition: transform 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .featured-card:hover img {
@@ -319,6 +321,7 @@ img {
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
+  border-radius: 12px 12px 0 0;
 }
 
 .blog-card-body {
@@ -574,8 +577,9 @@ img {
 
 .article-featured-image img {
   width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid #f3f4f6;
 }
 
 /* P4: Article Body (KUNCI TYPOGRAPHY) */
@@ -583,6 +587,25 @@ img {
   max-width: 720px;
   margin: 0 auto;
   padding: 0 1.5rem 4rem;
+}
+
+.article-body figure {
+  margin: 2.5rem 0;
+}
+
+.article-body img {
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid #f3f4f6;
+  margin: 0 auto;
+}
+
+.article-body figcaption {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-top: 0.75rem;
+  font-style: italic;
 }
 
 .article-body p {
@@ -684,9 +707,10 @@ img {
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 10px;
   margin-bottom: 1rem;
   transition: transform 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .related-card:hover img {

@@ -1,0 +1,27 @@
+{{/* layouts/partials/image.html */}}
+{{- $imgUrl := .url -}}
+{{- $page := .page -}}
+{{- $alt := .alt | default "Thumbnail" -}}
+{{- $class := .class | default "" -}}
+
+{{- if strings.HasPrefix $imgUrl "http" -}}
+  {{/* Gambar Eksternal */}}
+  <img src="{{ $imgUrl }}" alt="{{ $alt }}" {{ with $class }}class="{{ . }}"{{ end }} loading="lazy" decoding="async">
+{{- else -}}
+  {{/* Mencari Gambar Lokal di Resources (Leaf Bundle) */}}
+  {{- $locImg := $page.Resources.GetMatch $imgUrl -}}
+  {{- if $locImg -}}
+    {{/* Proses Gambar: Resize ke 600px width untuk thumbnail grid */}}
+    {{- $optimized := $locImg.Process "resize 600x webp q80" -}}
+    <img src="{{ $optimized.RelPermalink }}" 
+         width="{{ $optimized.Width }}" 
+         height="{{ $optimized.Height }}" 
+         alt="{{ $alt }}" 
+         {{ with $class }}class="{{ . }}"{{ end }}
+         loading="lazy" 
+         decoding="async">
+  {{- else -}}
+    {{/* Jika tidak ketemu di resources, tampilkan apa adanya */}}
+    <img src="{{ $imgUrl }}" alt="{{ $alt }}" {{ with $class }}class="{{ . }}"{{ end }} loading="lazy" decoding="async">
+  {{- end -}}
+{{- end -}}

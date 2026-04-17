@@ -23,8 +23,8 @@
         <li class="splide__slide">
           <article class="featured-card">
             <a href="{{ .RelPermalink }}">
-              {{- with .Params.image -}}
-                <img src="{{ . }}" alt="{{ $.Title }}">
+              {{- if .Params.image -}}
+                {{ partial "image.html" (dict "url" .Params.image "page" . "alt" .Title) }}
               {{- else -}}
                 <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=500&q=80&fit=crop" alt="{{ $.Title }}">
               {{- end -}}

@@ -9,7 +9,7 @@ tags: ["plausible", "analytics", "privacy", "docker"]
 series: []
 featured: false
 editorspick: false
-image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&q=80&fit=crop"
+image: "featured.jpg"
 quote: ""
 ---
 
@@ -71,3 +71,14 @@ Tambahkan script Plausible ke template Hugo:
 <!-- Di layouts/partials/head.html -->
 <script defer data-domain="domain.com" src="https://analytics.domain.com/js/script.js"></script>
 ```
+
+## Uji Coba Optimasi Gambar (Image Hooks)
+
+Bagian ini ditujukan untuk memverifikasi fitur Lazy Loading dan Image Processing otomatis (WebP).
+
+**1. Gambar Lokal (Leaf Bundle) - Otomatis WebP & Resize:**
+![Preview Gambar Lokal Terkompresi](featured.jpg)
+
+**2. Gambar Eksternal (Remote) - Lazy Loading Only:**
+![Remote Test](https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600)
+

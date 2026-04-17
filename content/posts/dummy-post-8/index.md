@@ -9,7 +9,7 @@ tags: ["docker", "docker-compose", "vps", "self-hosting"]
 series: []
 featured: false
 editorspick: true
-image: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=80&fit=crop"
+image: "featured.jpg"
 quote: "Container yang rapi adalah fondasi infrastruktur yang sehat."
 ---
 
@@ -60,3 +60,14 @@ networks:
 - Set memory limits di setiap container
 - Gunakan Traefik sebagai reverse proxy terpusat
 - Backup volume Docker secara rutin dengan rsync atau rclone
+
+## Uji Coba Optimasi Gambar (Image Hooks)
+
+Bagian ini ditujukan untuk memverifikasi fitur Lazy Loading dan Image Processing otomatis (WebP).
+
+**1. Gambar Lokal (Leaf Bundle) - Otomatis WebP & Resize:**
+![Preview Gambar Lokal Terkompresi](featured.jpg)
+
+**2. Gambar Eksternal (Remote) - Lazy Loading Only:**
+![Remote Test](https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600)
+

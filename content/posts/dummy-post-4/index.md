@@ -9,7 +9,7 @@ tags: ["homelab", "proxmox", "raspberry-pi", "networking"]
 series: []
 featured: true
 editorspick: true
-image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80&fit=crop"
+image: "featured.jpg"
 quote: "Homelab adalah tempat terbaik untuk belajar, karena tidak ada yang rugi jika sesuatu rusak."
 ---
 
@@ -38,3 +38,14 @@ Pilihan jatuh pada **Beelink Mini S12 Pro** dengan spesifikasi:
 ## Fase 3: Proxmox Virtualization
 
 Proxmox VE adalah platform virtualisasi open-source yang memungkinkan kita menjalankan VM dan container (LXC) dalam satu sistem. Ini adalah game-changer untuk homelab.
+
+## Uji Coba Optimasi Gambar (Image Hooks)
+
+Bagian ini ditujukan untuk memverifikasi fitur Lazy Loading dan Image Processing otomatis (WebP).
+
+**1. Gambar Lokal (Leaf Bundle) - Otomatis WebP & Resize:**
+![Preview Gambar Lokal Terkompresi](featured.jpg)
+
+**2. Gambar Eksternal (Remote) - Lazy Loading Only:**
+![Remote Test](https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600)
+
