@@ -12,10 +12,15 @@
       {{- range $paginator.Pages -}}
       <article class="blog-card">
         <a href="{{ .RelPermalink }}" class="blog-card-image">
-          {{- with .Params.image -}}
-            <img src="{{ . }}" alt="{{ $.Title }}">
+          {{- if .Params.image -}}
+            {{/* Menggunakan partial image.html: Mendukung Leaf Bundle, WebP, dan mem-fix Relative Path */}}
+            {{ partial "image.html" (dict "url" .Params.image "page" . "alt" .Title) }}
           {{- else -}}
-            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=500&q=80&fit=crop" alt="{{ $.Title }}">
+            {{/* Fallback / Placeholder jika author lupa mengisi gambar */}}
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=500&q=80&fit=crop" 
+                 alt="Ilustrasi default untuk {{ .Title }}" 
+                 loading="lazy" 
+                 decoding="async">
           {{- end -}}
         </a>
         <div class="blog-card-body">
