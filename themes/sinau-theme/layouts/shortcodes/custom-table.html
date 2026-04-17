@@ -1,0 +1,4 @@
+{{ $style := .Get "style" | default (.Page.Params.tableStyle | default "modern") }}
+<div class="custom-table-wrapper style-{{ $style }}">
+  {{ .Inner | markdownify }}
+</div>

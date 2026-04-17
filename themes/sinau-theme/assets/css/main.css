@@ -803,3 +803,147 @@ img {
 .scroll-top:active {
   transform: translateY(0);
 }
+
+/* === CUSTOM TABLE SYSTEM (Modern, Badge, Card) === */
+.custom-table-wrapper {
+  margin: 2.5rem 0;
+  width: 100%;
+}
+
+/* 1. Modern Clean Table */
+.style-modern table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  font-size: 0.95rem;
+}
+
+.style-modern th {
+  background: var(--cool-sky);
+  color: #ffffff;
+  text-align: left;
+  padding: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.style-modern td {
+  padding: 1.2rem;
+  border-bottom: 1px solid #f3f4f6;
+  color: #374151;
+}
+
+.style-modern tr:last-child td {
+  border-bottom: none;
+}
+
+.style-modern tr:nth-child(even) td {
+  background-color: var(--bright-snow);
+}
+
+/* 2. Badge Style (Processed by JS) */
+.style-badge table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.style-badge thead {
+  border-bottom: 2px solid #f3f4f6;
+}
+
+.style-badge th {
+  text-align: left;
+  padding: 1rem 0;
+  color: #9ca3af;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.style-badge td {
+  padding: 1.2rem 0;
+  border-bottom: 1px solid #f3f4f6;
+  vertical-align: middle;
+}
+
+.style-badge td:first-child {
+  font-weight: 700;
+  color: #111827;
+}
+
+.app-badge {
+  display: inline-block;
+  background: var(--sky-blue-light);
+  color: var(--cool-sky-dark);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  margin: 0.2rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.app-badge:hover {
+  background: var(--cool-sky);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* 3. Card Style (Layout transformed by JS) */
+.style-card table {
+  display: none; /* Hide the raw markdown table */
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.feature-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.75rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  border-top: 4px solid var(--cool-sky);
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.card-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card-items li {
+  font-size: 0.95rem;
+  color: #4b5563;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.card-items li::before {
+  content: '✓';
+  color: var(--cool-sky);
+  margin-right: 0.75rem;
+  font-weight: bold;
+}
+

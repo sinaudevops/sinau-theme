@@ -36,25 +36,44 @@ Setelah memastikan user baru bisa login via SSH key, langkah selanjutnya adalah 
 
 Ubuntu sudah menyediakan **UFW (Uncomplicated Firewall)** yang sangat mudah digunakan. Prinsipnya sederhana: blokir semua port secara default, lalu buka hanya port yang dibutuhkan.
 
-Port yang umumnya perlu dibuka untuk web server:
-
-1. **Port 22** — SSH (wajib, pastikan ini dibuka SEBELUM mengaktifkan firewall!)
-2. **Port 80** — HTTP
-3. **Port 443** — HTTPS
+{{< custom-table style="modern" >}}
+| Port | Protokol | Kegunaan | Dashboard |
+| :--- | :--- | :--- | :--- |
+| 22 | TCP | Akses SSH Aman | Terminal |
+| 80 | TCP | Trafik HTTP Standar | Web |
+| 443 | TCP | Trafik HTTPS Terenkripsi | Web |
+| 81 | TCP | Nginx Proxy Manager | Admin |
+{{< /custom-table >}}
 
 ## Langkah 3: Install Docker dan Docker Compose
 
 Untuk mengelola aplikasi, hampir selalu menggunakan Docker. Alasannya simpel: setiap aplikasi terisolasi dalam container-nya masing-masing, tidak saling mengganggu, dan mudah di-backup maupun di-migrate ke server lain.
 
-### Struktur Folder yang Digunakan
-
+### Struktur Folder dan Stack Aplikasi
 Setiap project ditempatkan di folder terpisah dengan file `docker-compose.yml`-nya masing-masing:
 
-- `/opt/apps/nginx-proxy/` — Reverse proxy (Nginx Proxy Manager)
-- `/opt/apps/plausible/` — Analytics
-- `/opt/apps/gitea/` — Git server pribadi
-- `/opt/apps/uptime-kuma/` — Monitoring uptime
+{{< custom-table style="badge" >}}
+| Kategori | Stack Aplikasi | Lokasi Host |
+| :--- | :--- | :--- |
+| **Networking** | Nginx Proxy Manager, Cloudflare Tunnel | `/opt/apps/proxy/` |
+| **Analytics** | Plausible, Umami, PostgreSQL | `/opt/apps/metrics/` |
+| **DevOps** | Gitea, Woodpecker CI, Drone | `/opt/apps/git/` |
+| **Monitoring** | Uptime Kuma, Netdata | `/opt/apps/monitor/` |
+{{< /custom-table >}}
+
+## Rangkuman Hardening Server
+Gunakan daftar periksa berikut untuk memastikan server Anda tetap aman:
+
+{{< custom-table style="card" >}}
+| Keamanan | Checklist Wajib |
+| :--- | :--- |
+| **Akses Login** | SSH Key Only, Non-Root User, Custom SSH Port |
+| **Firewall** | UFW Active, Only Required Ports, Fail2Ban |
+| **Updates** | Unattended-Upgrades, Weekly Reboots |
+| **Monitoring** | Email Alerter, Healthchecks, Remote Backup |
+{{< /custom-table >}}
 
 ## Penutup
 
 Setup server memang terasa menakutkan di awal, tapi setelah beberapa kali melakukannya, prosesnya akan terasa natural. Kunci utamanya adalah: **dokumentasikan setiap langkah**.
+
