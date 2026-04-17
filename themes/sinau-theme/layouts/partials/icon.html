@@ -1,0 +1,16 @@
+{{- $name := .name -}}
+{{- $class := .class | default "" -}}
+{{- $path := printf "icons/%s.svg" $name -}}
+{{- $svg := resources.Get $path -}}
+
+{{- if $svg -}}
+  {{- $minified := $svg | minify -}}
+  {{- $content := trim $minified.Content "\n" -}}
+  {{- /* Inject custom class if provided */ -}}
+  {{- if $class -}}
+    {{- $content = replaceRE "^<svg" (printf "<svg class=\"%s\"" $class) $content 1 -}}
+  {{- end -}}
+  {{- $content | safeHTML -}}
+{{- else -}}
+  <span style="color: red;">[Icon '{{ $name }}' not found]</span>
+{{- end -}}

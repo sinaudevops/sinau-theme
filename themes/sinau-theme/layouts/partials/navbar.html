@@ -6,7 +6,9 @@
 <header class="navbar">
   <div class="navbar-left">
     <a href="{{ .Site.BaseURL }}" class="navbar-logo">
-      <span class="navbar-logo-icon">⚡</span>
+      <span class="navbar-logo-icon">
+        {{ partial "icon.html" (dict "name" "home" "class" "w-6 h-6") }}
+      </span>
       <span>{{ .Site.Title }}</span>
     </a>
   </div>
@@ -24,7 +26,9 @@
 
   <div class="navbar-icons">
     {{- range .Site.Params.social -}}
-      <a href="{{ .url }}" class="navbar-icon" title="{{ .name }}">{{ .icon }}</a>
+      <a href="{{ .url }}" class="navbar-icon" title="{{ .name }}">
+        {{ partial "icon.html" (dict "name" .icon "class" "nav-svg") }}
+      </a>
     {{- end -}}
     <a href="#" class="navbar-icon" title="Bahasa">🌐 ID</a>
     <a href="#" class="navbar-icon" title="Tema">🌙</a>

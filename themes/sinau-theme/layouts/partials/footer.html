@@ -8,7 +8,9 @@
     <div class="footer-logo">{{ .Site.Params.footer.logo | default .Site.Title }}</div>
     <div class="footer-social">
       {{- range .Site.Params.social -}}
-        <a href="{{ .url }}" title="{{ .name }}"><span>{{ .icon }}</span></a>
+        <a href="{{ .url }}" title="{{ .name }}">
+          {{ partial "icon.html" (dict "name" .icon "class" "footer-icon") }}
+        </a>
       {{- end -}}
     </div>
   </div>

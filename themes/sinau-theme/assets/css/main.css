@@ -149,6 +149,27 @@ img {
   background: var(--sky-blue-light);
 }
 
+/* Icon System Styling */
+.nav-svg {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2;
+  color: currentColor;
+}
+
+.footer-icon {
+  width: 24px;
+  height: 24px;
+  stroke-width: 1.5;
+  color: #9ca3af;
+  transition: color 0.2s ease;
+}
+
+.footer-social a:hover .footer-icon {
+  color: #1f2937;
+}
+
+
 /* === 2. PAGE HEADER === */
 .page-header {
   display: flex;

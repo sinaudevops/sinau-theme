@@ -31,12 +31,12 @@ paginate = 6
   [[params.social]]
     name = "Twitter"
     url = "https://twitter.com/"
-    icon = "𝕏"
+    icon = "brand-twitter"
 
   [[params.social]]
     name = "GitHub"
     url = "https://github.com/"
-    icon = "⬡"
+    icon = "brand-github"
 
 # Menu Utama
 [[menus.main]]
