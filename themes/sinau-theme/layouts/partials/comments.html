@@ -1,13 +1,26 @@
-{{- /* 
-  Hanya render jika:
-  1. Environment adalah production ATAU localhost (optional diubah hugo.IsProduction)
-  2. disqusShortname telah diatur di konfigurasi
-  3. Konfigurasi per-halaman 'comments' bukan false
-*/ -}}
+{{/* 
+  Render jika `disqusshortname` ada di Params (telah terinjeksi dari environment Netlify)
+  dan opsi post '.Params.comments' tidak dikunci (false)
+*/}}
 
-{{ if and (or hugo.IsProduction hugo.IsServer) .Site.DisqusShortname (not (eq .Params.comments false)) }}
+{{ $disqus := .Site.Params.disqusshortname }}
+{{ if and $disqus (not (eq .Params.comments false)) }}
   <section class="comments-section">
     <h3>Komentar / Diskusi</h3>
-    {{ template "_internal/disqus.html" . }}
+    
+    <div id="disqus_thread"></div>
+    <script>
+      var disqus_config = function () {
+        this.page.url = '{{ .Permalink }}';
+        this.page.identifier = '{{ .File.UniqueID | default .File.ContentBaseName }}';
+      };
+      (function() {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://{{ $disqus }}.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </section>
 {{ end }}

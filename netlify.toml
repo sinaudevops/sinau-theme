@@ -1,19 +1,21 @@
 [build]
-  # Folder hasil build Hugo
+  # Build default untuk local & environment dasar
   publish = "public"
-  # Command utama untuk melakukan build (GC menghapus file redundan, minify memperkecil aset JS/CSS/HTML bawaan)
   command = "hugo --gc --minify"
 
 [build.environment]
-  # Tentukan versi spesifik untuk mengamankan backward/forward compatibility
   HUGO_VERSION = "0.124.1"
-  # Set environment bawaan untuk Hugo
-  HUGO_ENV = "production"
 
-# Konteks spesifik: ketika ada Deploy Preview (dari git Pull Requests)
-[context.deploy-preview]
-  command = "hugo --gc --minify -b $DEPLOY_PRIME_URL"
+# ENVIRONMENT: PRODUCTION
+[context.production]
+  environment = { HUGO_ENV = "production", HUGO_BASEURL = "https://domain-produksi-anda.com" }
 
-# Konteks spesifik: ketika melakukan branch deployments lain
+# ENVIRONMENT: BRANCH DEPLOYMENT (misal untuk branch 'development')
 [context.branch-deploy]
   command = "hugo --gc --minify -b $DEPLOY_PRIME_URL"
+  environment = { HUGO_ENV = "development" }
+
+# ENVIRONMENT: PULL REQUESTS
+[context.deploy-preview]
+  command = "hugo --gc --minify -b $DEPLOY_PRIME_URL"
+  environment = { HUGO_ENV = "development" }
