@@ -3,8 +3,9 @@ languageCode = 'id'
 title = 'sinau-theme'
 theme = 'sinau-theme'
 
-# Disqus configuration (diperlukan untuk komentar)
-disqusShortname = 'disqus-shortname-anda' # Ganti dengan nama Disqus shortname Anda
+# Disqus configuration
+# Akan dioverride oleh Netlify Environment Variable: HUGO_DISQUSSHORTNAME
+disqusShortname = ''
 
 # Pagination
 paginate = 6
