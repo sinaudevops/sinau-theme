@@ -1,0 +1,54 @@
+.footer {
+  background: $color-bg-base;
+  border-top: 1px solid $color-border;
+  padding: 3rem 2rem;
+  text-align: center;
+
+  &-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto 1.5rem;
+  }
+
+  &-logo {
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: #9ca3af;
+    letter-spacing: -1px;
+  }
+
+  &-social {
+    display: flex;
+    gap: 1rem;
+
+    a {
+      font-size: 1.25rem;
+      color: #9ca3af;
+      cursor: pointer;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: $color-heading;
+      }
+    }
+  }
+
+  &-copyright {
+    font-size: 0.875rem;
+    color: #9ca3af;
+  }
+}
+
+.footer-icon {
+  width: 24px;
+  height: 24px;
+  stroke-width: 1.5;
+  color: #9ca3af;
+  transition: color 0.2s ease;
+}
+
+.footer-social a:hover .footer-icon {
+  color: #1f2937;
+}

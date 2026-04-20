@@ -6,7 +6,7 @@
   {{- if and .TableOfContents (ne .TableOfContents "<nav id=\"TableOfContents\"></nav>") -}}
     <aside class="toc-container">
       <div class="toc-header">
-        {{- partial "icon.html" (dict "name" "list-details" "class" "w-5 h-5") -}}
+        {{- partial "icon.html" (dict "name" "list-details") -}}
         <span>Table of Contents</span>
       </div>
       <div class="toc-body">
