@@ -728,6 +728,22 @@ img {
 }
 
 /* === TABLE OF CONTENTS === */
+/* P6: Comments System */
+.comments-section {
+  max-width: 800px;
+  margin: 2rem auto 4rem;
+  padding: 3rem 2rem 0;
+  border-top: 1px solid #e5e7eb;
+}
+
+.comments-section h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 2rem;
+}
+
+/* === TABLE OF CONTENTS === */
 .toc-container {
   background: var(--bright-snow);
   border: 1px solid #e5e7eb;
