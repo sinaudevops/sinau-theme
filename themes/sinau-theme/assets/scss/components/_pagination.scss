@@ -1,0 +1,66 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid $color-border;
+
+  &-numbers {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  &-num {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: $color-text-main;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: $color-primary-light-bg;
+      color: $color-primary;
+    }
+
+    &.active {
+      background: $color-primary;
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(90, 169, 230, 0.35);
+    }
+  }
+
+  &-dots {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    color: #9ca3af;
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+
+  &-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: $color-text-main;
+    border: 1px solid $color-border;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: $color-primary;
+      color: #ffffff;
+      border-color: $color-primary;
+    }
+  }
+}

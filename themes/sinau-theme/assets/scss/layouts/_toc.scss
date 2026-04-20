@@ -1,0 +1,58 @@
+.toc-container {
+  background: $color-bg-light;
+  border: 1px solid $color-border;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.toc-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: $color-heading;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid $color-primary-focus;
+  padding-bottom: 0.5rem;
+
+  svg {
+    color: $color-primary;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.toc-body {
+  nav {
+    ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+
+      ul {
+        padding-left: 1.25rem;
+        margin-top: 0.5rem;
+      }
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    a {
+      color: #4b5563;
+      text-decoration: none;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: $color-primary;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+    }
+  }
+}
