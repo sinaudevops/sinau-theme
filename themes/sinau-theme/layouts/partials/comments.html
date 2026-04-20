@@ -1,0 +1,13 @@
+{{- /* 
+  Hanya render jika:
+  1. Environment adalah production ATAU localhost (optional diubah hugo.IsProduction)
+  2. disqusShortname telah diatur di konfigurasi
+  3. Konfigurasi per-halaman 'comments' bukan false
+*/ -}}
+
+{{ if and (or hugo.IsProduction hugo.IsServer) .Site.DisqusShortname (not (eq .Params.comments false)) }}
+  <section class="comments-section">
+    <h3>Komentar / Diskusi</h3>
+    {{ template "_internal/disqus.html" . }}
+  </section>
+{{ end }}
