@@ -3,6 +3,9 @@ languageCode = 'id'
 title = 'sinau-theme'
 theme = 'sinau-theme'
 
+# Disqus configuration (diperlukan untuk komentar)
+disqusShortname = 'disqus-shortname-anda' # Ganti dengan nama Disqus shortname Anda
+
 # Pagination
 paginate = 6
 
