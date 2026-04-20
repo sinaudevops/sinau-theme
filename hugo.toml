@@ -3,6 +3,10 @@ languageCode = 'id'
 title = 'sinau-theme'
 theme = 'sinau-theme'
 
+# Disqus configuration
+# Akan dioverride oleh Netlify Environment Variable: HUGO_DISQUSSHORTNAME
+disqusShortname = ''
+
 # Pagination
 paginate = 6
 
