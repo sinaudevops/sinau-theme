@@ -3,7 +3,7 @@ Render jika `disqusshortname` ada di Params (telah terinjeksi dari environment N
 dan opsi post '.Params.comments' tidak dikunci (false)
 */}}
 
-{{ $disqus := .Site.Params.disqusshortname }}
+{{ $disqus := site.Params.disqusshortname }}
 {{ if and $disqus (not (eq .Params.comments false)) }}
 <section class="comments-section">
   <h3>Komentar / Diskusi</h3>

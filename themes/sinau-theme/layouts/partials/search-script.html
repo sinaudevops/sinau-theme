@@ -23,7 +23,7 @@
 
       // Fetch Index.json secara lazy-load ketika search pertama kali diklik 
       if (!isIndexLoaded) {
-        fetch('{{ "index.json" | absURL }}')
+        fetch('{{ "index.json" | relURL }}')
           .then(response => response.json())
           .then(data => {
             // Inisialisasi parameter Fuse (Fuzzy Search threshold)

@@ -8,7 +8,8 @@
 
 # ENVIRONMENT: PRODUCTION
 [context.production]
-  environment = { HUGO_ENV = "production", HUGO_BASEURL = "https://domain-produksi-anda.com" }
+  command = "hugo --gc --minify -b $URL"
+  environment = { HUGO_ENV = "production" }
 
 # ENVIRONMENT: BRANCH DEPLOYMENT (misal untuk branch 'development')
 [context.branch-deploy]
