@@ -1,0 +1,41 @@
+// ==========================================
+// SCSS VARIABLES
+// ==========================================
+
+// 1. Core Colors
+$color-primary: #5AA9E6;           // cool-sky
+$color-secondary: #7FC8F8;         // sky-blue
+$color-bg-light: #F9F9F9;          // bright-snow
+$color-accent: #FFE45E;            // royal-gold
+$color-danger-cta: #FF6392;        // rose-kiss
+
+// 2. Derived & Semantic Colors
+$color-primary-dark: #4590C8;      // cool-sky-dark
+$color-danger-cta-dark: #E8527D;   // rose-kiss-dark
+$color-accent-dark: #8B6914;       // gold-dark
+$color-primary-light-bg: rgba(127, 200, 248, 0.15); // sky-blue-light
+$color-primary-focus: rgba(90, 169, 230, 0.12);    // cool-sky-light
+
+// 3. Text & Layout Colors
+$color-text-main: #374151;
+$color-text-muted: #6b7280;
+$color-heading: #1f2937;
+$color-border: #e5e7eb;
+$color-bg-base: #ffffff;
+
+// 4. Typography
+$font-primary: 'Inter', system-ui, sans-serif;
+$font-size-base: 16px;
+$line-height-base: 1.6;
+
+// 5. Spacing
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 2rem;
+$spacing-xl: 4rem;
+
+// 6. Breakpoints (untuk Responsive Design)
+$bp-mobile: 480px;
+$bp-tablet: 768px;
+$bp-desktop: 1024px;
+$bp-wide: 1200px;

@@ -28,13 +28,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&display=swap">
 
-  {{/* ===== CSS VIA HUGO PIPES ===== */}}
-  {{- $css := resources.Get "scss/main.scss" | toCSS -}}
+  {{/* ===== SCSS VIA HUGO PIPES ===== */}}
+  {{- $options := dict "targetPath" "css/style.css" -}}
+  {{- $style := resources.Get "scss/main.scss" | toCSS $options -}}
+  
   {{- if eq hugo.Environment "development" -}}
-    <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+    <link rel="stylesheet" href="{{ $style.RelPermalink }}">
   {{- else -}}
-    {{- $css = $css | minify | fingerprint -}}
-    <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" crossorigin="anonymous">
+    {{- $style = $style | minify | fingerprint -}}
+    <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" crossorigin="anonymous">
   {{- end -}}
 
   {{/* ===== SPLIDE SLIDER (Hanya di Homepage) ===== */}}
