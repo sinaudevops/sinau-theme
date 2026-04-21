@@ -1,0 +1,99 @@
+/* _lang-switcher.scss */
+.lang-switcher {
+    position: relative;
+    cursor: pointer;
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+        background: rgba(0, 0, 0, 0.03);
+        
+        .lang-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+    }
+}
+
+.lang-current {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+
+    .nav-svg {
+        width: 1.1rem;
+        height: 1.1rem;
+        color: var(--text-muted);
+    }
+}
+
+.lang-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 0.5rem;
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    padding: 0.5rem;
+    min-width: 120px;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    backdrop-filter: blur(8px);
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: -10px;
+        right: 15px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: transparent transparent #ffffff transparent;
+    }
+}
+
+.lang-option {
+    a {
+        display: block;
+        padding: 0.6rem 1rem;
+        color: var(--text-color);
+        text-decoration: none;
+        font-size: 0.85rem;
+        font-weight: 500;
+        border-radius: 6px;
+        transition: background 0.2s;
+
+        &:hover {
+            background: var(--sky-blue-light);
+            color: var(--cool-sky);
+        }
+    }
+
+    &.active a {
+        background: var(--sky-blue-light);
+        color: var(--cool-sky);
+        font-weight: 700;
+    }
+}
+
+/* Dark mode adjustment if applicable */
+[data-theme="dark"] .lang-dropdown {
+    background: #1f2937;
+    border-color: #374151;
+    
+    &::before {
+        border-color: transparent transparent #1f2937 transparent;
+    }
+}
