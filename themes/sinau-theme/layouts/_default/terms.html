@@ -1,0 +1,27 @@
+{{ define "main" }}
+
+<main class="page-container">
+  <header class="page-header">
+    <h1 class="page-title">{{ .Title }}</h1>
+    {{- $taxonomy := .Data.Plural -}}
+    <p class="page-description">Daftar semua {{ $taxonomy }} yang tersedia.</p>
+  </header>
+
+  <div class="terms-grid">
+    {{- range .Data.Terms.ByCount -}}
+    {{- $term := .Term -}}
+    {{- $count := .Count -}}
+    <a href="{{ .Page.RelPermalink }}" class="term-card">
+      <div class="term-info">
+        <h3 class="term-name">{{ $term | humanize }}</h3>
+        <span class="term-count">{{ $count }} Artikel</span>
+      </div>
+      <div class="term-icon">
+        {{ partial "icon.html" (dict "name" "list-details") }}
+      </div>
+    </a>
+    {{- end -}}
+  </div>
+</main>
+
+{{ end }}

@@ -6,6 +6,24 @@
 {{/* Judul Artikel */}}
 <header class="article-header">
   <h1 class="article-title">{{ .Title }}</h1>
+  
+  <div class="article-meta">
+    <time class="meta-item">
+      {{ partial "icon.html" (dict "name" "calendar" "class" "meta-icon") }}
+      {{ .Date.Format "02 Jan 2006" }}
+    </time>
+    <span class="meta-divider">•</span>
+    <span class="meta-item">
+      {{ partial "icon.html" (dict "name" "clock" "class" "meta-icon") }}
+      {{ .ReadingTime }} min read
+    </span>
+    {{ with .GetTerms "categories" }}
+      <span class="meta-divider">•</span>
+      {{ range . }}
+        <a href="{{ .RelPermalink }}" class="meta-category">{{ .LinkTitle }}</a>
+      {{ end }}
+    {{ end }}
+  </div>
 </header>
 
 {{/* Hero Quote (hanya muncul jika ada .Params.quote di front matter) */}}

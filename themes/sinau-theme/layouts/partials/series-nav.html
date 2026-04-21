@@ -1,0 +1,22 @@
+{{- $series := .GetTerms "series" -}}
+{{- if $series -}}
+  {{- range $series -}}
+    <div class="series-nav-box">
+      <div class="series-header">
+        <span class="series-label">SERIES</span>
+        <h3 class="series-title">{{ .LinkTitle }}</h3>
+      </div>
+      <ul class="series-list">
+        {{- range .Pages.ByDate -}}
+          <li class="series-item {{ if eq .File.UniqueID $.File.UniqueID }}active{{ end }}">
+            {{- if eq .File.UniqueID $.File.UniqueID -}}
+              <span class="current-post">👉 {{ .Title }}</span>
+            {{- else -}}
+              <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            {{- end -}}
+          </li>
+        {{- end -}}
+      </ul>
+    </div>
+  {{- end -}}
+{{- end -}}

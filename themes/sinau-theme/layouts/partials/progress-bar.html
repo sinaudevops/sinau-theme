@@ -1,0 +1,9 @@
+{{/* 
+  Reading Progress Bar Partial
+  Hanya muncul di halaman artikel (single post)
+*/}}
+{{ if .IsPage }}
+  <div class="progress-container">
+    <div id="reading-progress"></div>
+  </div>
+{{ end }}
