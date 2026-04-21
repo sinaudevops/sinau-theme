@@ -6,6 +6,7 @@
 @import 'base/reset';
 @import 'base/typography';
 @import 'base/variables';
+@import 'base/error';
 
 // 3. Components
 @import 'components/navbar';
@@ -17,6 +18,7 @@
 @import 'components/author';
 @import 'components/authors-page';
 @import 'components/syntax';
+@import 'components/search';
 
 // 4. Layouts (Specific section overrides)
 @import 'layouts/single-post';
