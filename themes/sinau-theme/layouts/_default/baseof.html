@@ -23,6 +23,19 @@
   {{ template "_internal/opengraph.html" . }}
   {{ template "_internal/twitter_cards.html" . }}
 
+  {{/* ===== SCHEMA.ORG JSON-LD ===== */}}
+  {{ partial "seo/schema.html" . }}
+
+  {{/* ===== RSS AUTO-DETECTION ===== */}}
+  {{ with .OutputFormats.Get "rss" -}}
+    <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}" title="{{ $.Site.Title }}">
+  {{ end -}}
+
+  {{/* ===== FAVICONS & APPLE TOUCH ICONS ===== */}}
+  <link rel="shortcut icon" href="{{ "favicon.ico" | absURL }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32x32.png" | absURL }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ "apple-touch-icon.png" | absURL }}">
+
   {{/* ===== GOOGLE FONTS ===== */}}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,6 +59,9 @@
 
   {{/* ===== BLOCK HEAD (untuk custom per halaman) ===== */}}
   {{ block "head" . }}{{ end }}
+
+  {{/* ===== ANALYTICS ===== */}}
+  {{ partial "seo/analytics.html" . }}
 
 
 </head>
