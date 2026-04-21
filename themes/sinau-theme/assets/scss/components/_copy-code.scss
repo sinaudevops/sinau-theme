@@ -1,0 +1,60 @@
+/* _copy-code.scss */
+.highlight {
+  position: relative;
+
+  &:hover .copy-code-button {
+    opacity: 1;
+  }
+}
+
+.copy-code-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  color: #ffffff;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  backdrop-filter: blur(4px);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  svg {
+    width: 1.1rem;
+    height: 1.1rem;
+    pointer-events: none;
+  }
+
+  &.copied {
+    color: #4ade80; /* Success green */
+    border-color: #4ade80;
+  }
+}
+
+/* Ensure long code doesn't overlap button too much on small screens */
+@media (max-width: 640px) {
+    .copy-code-button {
+        opacity: 0.8; /* Keep visible on touch devices */
+        padding: 0.4rem;
+        
+        svg {
+            width: 1rem;
+            height: 1rem;
+        }
+    }
+}
