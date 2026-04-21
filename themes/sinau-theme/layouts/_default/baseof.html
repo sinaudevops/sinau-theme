@@ -99,6 +99,10 @@
     {{- $js = $js | minify | fingerprint -}}
     <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous" defer></script>
   {{- end -}}
+
+  {{/* ===== COPY CODE BUTTON JS ===== */}}
+  {{- $copyJS := resources.Get "js/copy-code.js" | minify | fingerprint -}}
+  <script src="{{ $copyJS.RelPermalink }}" integrity="{{ $copyJS.Data.Integrity }}" crossorigin="anonymous" defer></script>
 </body>
 
 </html>
