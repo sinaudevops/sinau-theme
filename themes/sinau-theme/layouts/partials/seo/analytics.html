@@ -1,0 +1,25 @@
+{{- /* 
+  MODULAR ANALYTICS LOADER
+  Menghindari pengumpulan data di environment development.
+*/ -}}
+
+{{- if not .Site.IsServer -}}
+  {{- with .Site.Params.analytics -}}
+    
+    {{- /* Umami Analytics */ -}}
+    {{- if .umami.id -}}
+      {{ partial "seo/umami.html" .umami }}
+    {{- end -}}
+
+    {{- /* Plausible Analytics */ -}}
+    {{- if .plausible.domain -}}
+      {{ partial "seo/plausible.html" .plausible }}
+    {{- end -}}
+
+    {{- /* Google Analytics (Gtag) */ -}}
+    {{- if .google.id -}}
+      {{ partial "seo/google-analytics.html" .google }}
+    {{- end -}}
+
+  {{- end -}}
+{{- end -}}

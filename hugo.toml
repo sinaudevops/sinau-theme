@@ -19,6 +19,21 @@ paginate = 6
   author = "alex"
   mainSections = ["posts"]
 
+  # Technical SEO & Analytics
+  # Isi ID/Domain untuk mengaktifkan platform analitik pilihan Anda.
+  [params.analytics]
+    [params.analytics.umami]
+      id     = "" # Masukkan Website ID Umami
+      server = "https://analytics.umami.is" # Opsional (self-hosted)
+    [params.analytics.plausible]
+      domain = "" # Masukkan Domain (contoh: domain.com)
+      server = "https://plausible.io" # Opsional (self-hosted)
+    [params.analytics.google]
+      id     = "" # Masukkan Gtag ID (contoh: G-XXXXXXXXXX)
+
+
+
+
   # Page Header
   pageTitle = "Catatan Teknis — Linux, DevOps, dan Self-Hosting"
 
