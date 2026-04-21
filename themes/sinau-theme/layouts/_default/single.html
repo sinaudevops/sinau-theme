@@ -10,6 +10,34 @@
     {{ partial "toc.html" . }}
 
     {{ .Content }}
+
+    {{/* AUTHOR BIO BOX */}}
+    {{ if .Params.showAuthor | default true }}
+      {{ $authorId := .Params.author | default site.Params.author }}
+      {{ $activeAuthor := "" }}
+      {{ range site.Params.authors }}
+        {{ if eq .id $authorId }}
+          {{ $activeAuthor = . }}
+        {{ end }}
+      {{ end }}
+
+      {{ with $activeAuthor }}
+      <section class="author-bio-box">
+        <div class="author-avatar">
+          <img src="{{ .avatar }}" alt="{{ .name }}" width="80" height="80">
+        </div>
+        <div class="author-details">
+          <h4 class="author-name">{{ .name }}</h4>
+          <p class="author-bio">{{ .bio }}</p>
+          <div class="author-links">
+            {{ with .github }}<a href="{{ . }}" target="_blank">GitHub</a>{{ end }}
+            {{ with .twitter }}<a href="{{ . }}" target="_blank">Twitter</a>{{ end }}
+            {{ with .linkedin }}<a href="{{ . }}" target="_blank">LinkedIn</a>{{ end }}
+          </div>
+        </div>
+      </section>
+      {{ end }}
+    {{ end }}
   </article>
 </main>
 

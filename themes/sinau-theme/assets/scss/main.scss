@@ -5,6 +5,7 @@
 // 2. Base
 @import 'base/reset';
 @import 'base/typography';
+@import 'base/variables';
 
 // 3. Components
 @import 'components/navbar';
@@ -13,6 +14,9 @@
 @import 'components/newsletter';
 @import 'components/footer';
 @import 'components/scroll-top';
+@import 'components/author';
+@import 'components/authors-page';
+@import 'components/syntax';
 
 // 4. Layouts (Specific section overrides)
 @import 'layouts/single-post';

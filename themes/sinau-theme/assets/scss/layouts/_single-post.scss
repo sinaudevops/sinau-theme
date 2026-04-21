@@ -144,19 +144,67 @@
     color: $color-heading;
   }
 
+  /* Hilangkan background default pre agar tidak double dengan Chroma */
   pre {
-    background: $color-heading;
-    color: #e5e7eb;
-    padding: 1.25rem 1.5rem;
-    border-radius: 8px;
-    overflow-x: auto;
+    background: transparent;
+    padding: 0;
     margin-bottom: 1.5rem;
+    overflow-x: visible; /* Scroll dihandle oleh .chroma */
+  }
 
+  /* Style untuk Chroma (Wrapper utama dari Hugo Highlight) */
+  .highlight {
+    margin-bottom: 2rem;
+    border-radius: 12px;
+    overflow: hidden; /* Agar border-radius memotong isi */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .chroma {
+    background: #0d1117 !important; /* Sinkron dengan _syntax.scss */
+    padding: 1rem 0;
+    overflow-x: auto; /* KUNCI: Membuat scrollbar horizontal */
+    display: block;
+    width: 100%;
+    border-radius: 12px;
+
+    /* Styling tabel nomor baris (LNTABLE) */
+    .lntable {
+      display: table;
+      width: 100%;
+      border-spacing: 0;
+      margin: 0;
+      border: 0;
+    }
+
+    .lntd {
+      padding: 0;
+      margin: 0;
+      border: 0;
+      
+      /* Kolom nomor baris */
+      &:first-child {
+        width: 1%;
+        white-space: nowrap;
+        user-select: none;
+        background: rgba(255, 255, 255, 0.03); /* Sedikit membedakan kolom nomor */
+      }
+    }
+
+    /* Isi kode */
     code {
       background: none;
-      padding: 0;
+      padding: 0 1.5rem; /* Padding horizontal di dalam scroll */
       color: inherit;
       font-size: 0.95rem;
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      display: block;
+      white-space: pre; /* Tetapkan pre-wrap atau pre */
+    }
+    
+    .line {
+      display: block;
+      padding: 0 1.5rem;
     }
   }
 }

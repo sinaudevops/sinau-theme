@@ -46,6 +46,8 @@
 
   {{/* ===== BLOCK HEAD (untuk custom per halaman) ===== */}}
   {{ block "head" . }}{{ end }}
+
+
 </head>
 
 <body>
@@ -74,6 +76,7 @@
   {{- end -}}
 
   {{- $js := resources.Get "js/main.js" -}}
+  
   {{- if eq hugo.Environment "development" -}}
     <script src="{{ $js.RelPermalink }}" defer></script>
   {{- else -}}

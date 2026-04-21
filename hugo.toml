@@ -16,7 +16,7 @@ paginate = 6
   # Akan di-override oleh env var netlify HUGO_PARAMS_DISQUSSHORTNAME
   disqusshortname = ''
   
-  author = "sinau-theme"
+  author = "alex"
   mainSections = ["posts"]
 
   # Page Header
@@ -83,6 +83,32 @@ paginate = 6
     endLevel = 3
     ordered = false
     startLevel = 2
+  [markup.highlight]
+    lineNos = true
+    noClasses = false
+    style = "github"
+
+# Authors Configuration (for UI Stress Test)
+[[params.authors]]
+  id = "alex"
+  name = "Alex Rivera"
+  bio = "Cloud Architect & Open Source Enthusiast. Loves brewing coffee and automating everything with Go."
+  avatar = "https://i.pravatar.cc/150?u=alex"
+  github = "https://github.com/alex"
+  linkedin = "https://linkedin.com/in/alex"
+
+[[params.authors]]
+  id = "sarah"
+  name = "Sarah Miller"
+  bio = "Frontend Engineer."
+  avatar = "https://i.pravatar.cc/150?u=sarah"
+  twitter = "https://twitter.com/sarah"
+
+[[params.authors]]
+  id = "budi"
+  name = "Budi Santoso"
+  bio = "DevOps Specialist specializing in Kubernetes and CI/CD pipelines. A strong advocate for infrastructure as code and reliable systems architecture. When not coding, Budi enjoys mountain hiking and photography, capturing the natural beauty of the Indonesian archipelago."
+  avatar = "https://i.pravatar.cc/150?u=budi"
 
 # Output Formats
 [outputs]

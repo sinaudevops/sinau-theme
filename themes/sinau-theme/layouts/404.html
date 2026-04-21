@@ -1,0 +1,19 @@
+{{ define "main" }}
+<main class="page-404">
+  <div class="error-container" style="text-align: center; padding: 10rem 2rem;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color: var(--rose-kiss); margin-bottom: 2rem; display: inline-block;">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+    </svg>
+    
+    <h1 style="font-size: 5rem; font-weight: 900; margin: 0; color: var(--text-color); line-height: 1;">404</h1>
+    <h2 style="font-size: 1.75rem; font-weight: 700; color: var(--text-color); margin: 1rem 0 2rem;">Halaman Tidak Ditemukan</h2>
+    <p style="color: var(--text-muted); max-width: 500px; margin: 0 auto 3rem; font-size: 1.125rem;">
+      Maaf, konten yang Anda cari tidak ada di sini. Mungkin sudah dipindah atau tautannya salah ketik.
+    </p>
+    
+    <a href="{{ "/" | relLangURL }}" class="author-links" style="display: inline-block; padding: 0.875rem 2rem; background: var(--cool-sky); color: #ffffff !important; border-radius: 50px; font-weight: 700; text-decoration: none; transition: transform 0.2s;">
+      Kembali ke Beranda
+    </a>
+  </div>
+</main>
+{{ end }}
