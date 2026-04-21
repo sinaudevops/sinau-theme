@@ -77,9 +77,9 @@ paginate = 6
   weight = 30
 
 [[menus.main]]
-  name = 'Arsip'
-  pageRef = '/arsip'
-  weight = 40
+  name = 'Archive'
+  pageRef = '/archive'
+  weight = 15
 
 [[menus.main]]
   name = 'Tentang'

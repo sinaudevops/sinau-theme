@@ -11,6 +11,9 @@
 
     {{ .Content }}
 
+    {{/* SERIES NAVIGATION (Jika ada) */}}
+    {{ partial "series-nav.html" . }}
+
     {{/* AUTHOR BIO BOX */}}
     {{ if .Params.showAuthor | default true }}
       {{ $authorId := .Params.author | default site.Params.author }}

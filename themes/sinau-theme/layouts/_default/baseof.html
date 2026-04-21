@@ -68,6 +68,7 @@
 
 <body>
   {{/* ===== NAVBAR ===== */}}
+  {{ partial "progress-bar.html" . }}
   {{ partial "navbar.html" . }}
 
   {{/* ===== MAIN CONTENT (diisi oleh setiap template) ===== */}}
@@ -103,6 +104,11 @@
   {{/* ===== COPY CODE BUTTON JS ===== */}}
   {{- $copyJS := resources.Get "js/copy-code.js" | minify | fingerprint -}}
   <script src="{{ $copyJS.RelPermalink }}" integrity="{{ $copyJS.Data.Integrity }}" crossorigin="anonymous" defer></script>
+  
+  {{- if .IsPage -}}
+    {{- $progressJS := resources.Get "js/progress.js" | minify | fingerprint -}}
+    <script src="{{ $progressJS.RelPermalink }}" integrity="{{ $progressJS.Data.Integrity }}" crossorigin="anonymous" defer></script>
+  {{- end -}}
 </body>
 
 </html>
