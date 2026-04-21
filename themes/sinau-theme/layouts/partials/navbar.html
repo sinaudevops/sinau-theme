@@ -15,8 +15,8 @@
 
   <nav class="navbar-menu">
     {{- range .Site.Menus.main -}}
-      <a href="{{ .URL }}"{{- if $.IsMenuCurrent "main" . }} class="active"{{- end -}}>
-        {{- .Name -}}
+      <a href="{{ .URL | relLangURL }}"{{- if $.IsMenuCurrent "main" . }} class="active"{{- end -}}>
+        {{ T .Identifier | default .Name }}
         {{- if .HasChildren -}}
           <span class="dropdown-arrow">▾</span>
         {{- end -}}
@@ -25,7 +25,7 @@
   </nav>
 
   <div class="navbar-icons">
-    <a href="#" class="navbar-icon" id="search-trigger" title="Search">
+    <a href="#" class="navbar-icon" id="search-trigger" title="{{ T "search" }}">
       {{ partial "icon.html" (dict "name" "search" "class" "nav-svg") }}
     </a>
     {{- range .Site.Params.social -}}
@@ -33,6 +33,6 @@
         {{ partial "icon.html" (dict "name" .icon "class" "nav-svg") }}
       </a>
     {{- end -}}
-    <a href="#" class="navbar-icon" title="Bahasa">🌐 ID</a>
+    {{ partial "lang-switcher.html" . }}
   </div>
 </header>

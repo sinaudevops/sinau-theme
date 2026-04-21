@@ -1,0 +1,44 @@
+[search]
+other = "Cari"
+
+[language]
+other = "Bahasa"
+
+[read_more]
+other = "Baca Selengkapnya"
+
+[latest_articles]
+other = "ARTIKEL TERBARU"
+
+[catatan]
+other = "Catatan"
+
+[archive]
+other = "Arsip"
+
+[categories]
+other = "Kategori"
+
+[series]
+other = "Series"
+
+[about]
+other = "Tentang"
+
+[not_found_title]
+other = "Waduh! Halaman Hilang."
+
+[not_found_desc]
+other = "Sepertinya halaman yang Anda cari telah pindah ke dimensi lain atau memang tidak pernah ada."
+
+[back_home]
+other = "Kembali ke Beranda"
+
+[newsletter_title]
+other = "Ikuti Catatan Teknis."
+
+[newsletter_desc]
+other = "Dapatkan notifikasi tulisan terbaru langsung via RSS atau email."
+
+[subscribe]
+other = "Langganan"

@@ -1,0 +1,44 @@
+[search]
+other = "Search"
+
+[language]
+other = "Language"
+
+[read_more]
+other = "Read More"
+
+[latest_articles]
+other = "LATEST ARTICLES"
+
+[catatan]
+other = "Notes"
+
+[archive]
+other = "Archive"
+
+[categories]
+other = "Categories"
+
+[series]
+other = "Series"
+
+[about]
+other = "About"
+
+[not_found_title]
+other = "Whoops! Page Lost."
+
+[not_found_desc]
+other = "It looks like the page you are looking for has moved to another dimension or never existed."
+
+[back_home]
+other = "Back to Home"
+
+[newsletter_title]
+other = "Follow Tech Notes."
+
+[newsletter_desc]
+other = "Get notified of the latest posts directly via RSS or email."
+
+[subscribe]
+other = "Subscribe"

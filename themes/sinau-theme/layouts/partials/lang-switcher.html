@@ -1,0 +1,25 @@
+<div class="lang-switcher">
+    <div class="lang-current">
+        {{ partial "icon.html" (dict "name" "world" "class" "nav-svg") }}
+        <span class="lang-label">{{ .Site.Language.LanguageName }}</span>
+    </div>
+    
+    {{- if .IsTranslated -}}
+    <ul class="lang-dropdown">
+        {{- range .AllTranslations -}}
+        <li class="lang-option {{ if eq .Language.Lang $.Site.Language.Lang }}active{{ end }}">
+            <a href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>
+        </li>
+        {{- end -}}
+    </ul>
+    {{- else -}}
+    {{/* Fallback jika halaman belum diterjemahkan: Tampilkan opsi ke Home bahasa alternatif */}}
+    <ul class="lang-dropdown">
+        {{- range .Site.Languages -}}
+        <li class="lang-option {{ if eq .Lang $.Site.Language.Lang }}active{{ end }}">
+            <a href="{{ .Lang | relLangURL }}/">{{ .LanguageName }}</a>
+        </li>
+        {{- end -}}
+    </ul>
+    {{- end -}}
+</div>

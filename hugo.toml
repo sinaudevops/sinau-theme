@@ -1,23 +1,56 @@
-# baseURL sengaja dikosongkan. 
-# Akan di-override oleh argumen CLI (-b) atau variabel HUGO_BASEURL Netlify
 baseURL = ''
-languageCode = 'id'
-title = 'sinau-theme'
 theme = 'sinau-theme'
+
+# Multilingual Configuration
+defaultContentLanguage = 'id'
+defaultContentLanguageInSubdir = false # ID di root (/), EN di subfolder (/en/)
+
+[languages]
+  [languages.id]
+    languageCode = 'id'
+    languageName = 'ID'
+    weight = 1
+    title = 'sinau-theme.'
+    [languages.id.params]
+      description = "Catatan Teknis — Linux, DevOps, dan Self-Hosting"
+      pageTitle = "Catatan Teknis — Linux, DevOps, dan Self-Hosting"
+      # Newsletter CTA (ID)
+      [languages.id.params.newsletter]
+        title = "Ikuti Catatan Teknis."
+        description = "Dapatkan notifikasi tulisan terbaru langsung via RSS atau email."
+        buttonText = "Langganan"
+        placeholder = "email@kamu.com"
+      # Footer (ID)
+      [languages.id.params.footer]
+        logo = "sinau-theme."
+        copyright = "sinau-theme. Blog teknis pribadi. Dibuat dengan Hugo."
+
+  [languages.en]
+    languageCode = 'en'
+    languageName = 'EN'
+    weight = 2
+    title = 'sinau-theme.'
+    [languages.en.params]
+      description = "Technical Notes — Linux, DevOps, and Self-Hosting"
+      pageTitle = "Technical Notes — Linux, DevOps, and Self-Hosting"
+      # Newsletter CTA (EN)
+      [languages.en.params.newsletter]
+        title = "Follow Tech Notes."
+        description = "Get notified of the latest posts directly via RSS or email."
+        buttonText = "Subscribe"
+        placeholder = "email@you.com"
+      # Footer (EN)
+      [languages.en.params.footer]
+        logo = "sinau-theme."
+        copyright = "sinau-theme. Personal technical blog. Built with Hugo."
 
 # Pagination
 paginate = 6
 
-# Main sections (untuk query .Site.RegularPages)
 [params]
-  description = "Catatan Teknis — Linux, DevOps, dan Self-Hosting"
-  
-  # Disqus dikosongkan. 
-  # Akan di-override oleh env var netlify HUGO_PARAMS_DISQUSSHORTNAME
-  disqusshortname = ''
-  
   author = "alex"
   mainSections = ["posts"]
+  disqusshortname = ''
 
   # Technical SEO & Analytics
   # Isi ID/Domain untuk mengaktifkan platform analitik pilihan Anda.
@@ -37,18 +70,6 @@ paginate = 6
   # Page Header
   pageTitle = "Catatan Teknis — Linux, DevOps, dan Self-Hosting"
 
-  # Newsletter CTA
-  [params.newsletter]
-    title = "Ikuti Catatan Teknis."
-    description = "Dapatkan notifikasi tulisan terbaru langsung via RSS atau email."
-    buttonText = "Langganan"
-    placeholder = "email@kamu.com"
-
-  # Footer
-  [params.footer]
-    logo = "sinau-theme."
-    copyright = "sinau-theme. Blog teknis pribadi. Dibuat dengan Hugo."
-
   # Social Links (dipakai di navbar & footer)
   [[params.social]]
     name = "Twitter"
@@ -62,26 +83,31 @@ paginate = 6
 
 # Menu Utama
 [[menus.main]]
+  identifier = 'catatan'
   name = 'Catatan'
   pageRef = '/posts'
   weight = 10
 
 [[menus.main]]
-  name = 'Kategori'
-  pageRef = '/categories'
-  weight = 20
-
-[[menus.main]]
-  name = 'Series'
-  pageRef = '/series'
-  weight = 30
-
-[[menus.main]]
+  identifier = 'archive'
   name = 'Archive'
   pageRef = '/archive'
   weight = 15
 
 [[menus.main]]
+  identifier = 'categories'
+  name = 'Kategori'
+  pageRef = '/categories'
+  weight = 20
+
+[[menus.main]]
+  identifier = 'series'
+  name = 'Series'
+  pageRef = '/series'
+  weight = 30
+
+[[menus.main]]
+  identifier = 'about'
   name = 'Tentang'
   pageRef = '/tentang'
   weight = 50
