@@ -72,19 +72,17 @@
           const item = result.item;
 
           const li = document.createElement('li');
-          li.style.marginBottom = "15px";
-          li.style.paddingBottom = "15px";
-          li.style.borderBottom = "1px solid #eee";
+          li.className = 'search-result-item';
 
           let catHtml = '';
           if (item.categories && item.categories.length > 0) {
-            catHtml = `<span style="font-size:11px;background:#eee;padding:2px 5px;border-radius:3px; margin-left: 10px;">${item.categories[0].LinkTitle}</span>`;
+            catHtml = `<span class="app-badge">${item.categories[0].LinkTitle}</span>`;
           }
 
           li.innerHTML = `
-          <a href="${item.permalink}" style="text-decoration:none; color:inherit; display:block;">
-            <h4 style="margin:0 0 5px 0;">${item.title} ${catHtml}</h4>
-            <p style="margin:0; font-size:13px; color:#666;">${item.summary.substr(0, 120)}...</p>
+          <a href="${item.permalink}">
+            <h4 class="result-title">${item.title} ${catHtml}</h4>
+            <p class="result-snippet">${item.summary.substr(0, 120)}...</p>
           </a>
         `;
           searchResults.appendChild(li);
