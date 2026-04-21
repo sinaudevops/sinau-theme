@@ -1,0 +1,64 @@
+/* _author.scss */
+.author-bio-box {
+  display: flex;
+  gap: 1.5rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin: 3rem 0;
+  align-items: center;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.author-avatar {
+  flex-shrink: 0;
+  
+  img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--cool-sky);
+  }
+}
+
+.author-details {
+  .author-name {
+    margin: 0 0 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-color);
+  }
+
+  .author-bio {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+  }
+
+  .author-links {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.85rem;
+
+    @media (max-width: 640px) {
+        justify-content: center;
+    }
+
+    a {
+      color: var(--cool-sky);
+      font-weight: 600;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

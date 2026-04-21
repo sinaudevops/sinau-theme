@@ -1,31 +1,7 @@
-/* === RESET & COLOR PALETTE === */
-/* Google Fonts dipanggil dari baseof.html via <link> tag langsung */
-
-:root {
-  /* Color Palette */
-  --cool-sky: #5AA9E6;
-  /* Primary — tombol, link, aksen utama */
-  --sky-blue: #7FC8F8;
-  /* Secondary — hover ringan, border aksen */
-  --bright-snow: #F9F9F9;
-  /* Background — latar section */
-  --royal-gold: #FFE45E;
-  /* Highlight — badge background, aksen dekoratif */
-  --rose-kiss: #FF6392;
-  /* Aksen kuat — CTA, scroll-top */
-
-  /* Derived Colors */
-  --cool-sky-dark: #4590C8;
-  /* Hover state dari cool-sky */
-  --rose-kiss-dark: #E8527D;
-  /* Hover state dari rose-kiss */
-  --gold-dark: #8B6914;
-  /* Teks gelap di atas gold background */
-  --sky-blue-light: rgba(127, 200, 248, 0.15);
-  /* Background ringan */
-  --cool-sky-light: rgba(90, 169, 230, 0.12);
-  /* Focus ring */
-}
+@import 'base/variables';
+@import 'components/syntax';
+@import 'components/author';
+@import 'components/authors-page';
 
 * {
   margin: 0;
@@ -35,8 +11,9 @@
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  background-color: #ffffff;
-  color: #374151;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
   line-height: 1.6;
 }
 
@@ -672,20 +649,70 @@ img {
   color: #1f2937;
 }
 
-.article-body pre {
-  background: #1f2937;
-  color: #e5e7eb;
-  padding: 1.25rem 1.5rem;
-  border-radius: 8px;
-  overflow-x: auto;
-  margin-bottom: 1.5rem;
-}
+.article-body {
+  /* Hilangkan background default pre agar tidak double dengan Chroma */
+  pre {
+    background: transparent;
+    padding: 0;
+    margin-bottom: 1.5rem;
+    overflow-x: visible; /* Scroll dihandle oleh .chroma */
+  }
 
-.article-body pre code {
-  background: none;
-  padding: 0;
-  color: inherit;
-  font-size: 0.95rem;
+  /* Style untuk Chroma (Wrapper utama dari Hugo Highlight) */
+  .highlight {
+    margin-bottom: 2rem;
+    border-radius: 12px;
+    overflow: hidden; /* Agar border-radius memotong isi */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .chroma {
+    background: #0d1117 !important; /* Sinkron dengan _syntax.scss */
+    padding: 1rem 0;
+    overflow-x: auto; /* KUNCI: Membuat scrollbar horizontal */
+    display: block;
+    width: 100%;
+    border-radius: 12px;
+
+    /* Styling tabel nomor baris (LNTABLE) */
+    .lntable {
+      display: table;
+      width: 100%;
+      border-spacing: 0;
+      margin: 0;
+      border: 0;
+    }
+
+    .lntd {
+      padding: 0;
+      margin: 0;
+      border: 0;
+      
+      /* Kolom nomor baris */
+      &:first-child {
+        width: 1%;
+        white-space: nowrap;
+        user-select: none;
+        background: rgba(255, 255, 255, 0.03); /* Sedikit membedakan kolom nomor */
+      }
+    }
+
+    /* Isi kode */
+    code {
+      background: none;
+      padding: 0 1.5rem; /* Padding horizontal di dalam scroll */
+      color: inherit;
+      font-size: 0.95rem;
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      display: block;
+      white-space: pre; /* Tetapkan pre-wrap atau pre */
+    }
+    
+    .line {
+      display: block;
+      padding: 0 1.5rem;
+    }
+  }
 }
 
 /* P5: Related Posts */
